@@ -9,6 +9,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
 
     private Button mBtnShow;
+    private Button mBtnOther;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
