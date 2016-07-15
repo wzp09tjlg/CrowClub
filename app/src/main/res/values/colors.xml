@@ -3,4 +3,36 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+    <!--*****************************************************-->
+    <!-- 控件的颜色值  -->
+    <!--*****************************************************-->
+    <!-- XListViewFooter -->
+    <color name="color_item_parent_bg">#FFF0F0F0</color>
+    <color name="color_item_bg">#FFFFFFFF</color>
+    <color name="color_item_bg_select">#FFF8F8F8</color>
+    <color name="color_item_divider">#FFDFDFDD</color>
+
+    <!--Item的配色 XListViewFooter内部文字的颜色 -->
+    <color name="color_item_title">#ff333333</color>
+    <color name="color_item_content">#ff737373</color>
+    <color name="color_item_author">#ff333333</color>
+    <color name="color_item_time">#ff999999</color>
+    <color name="color_item_normal">#ff6a6a6a</color>
+
+    <!-- refreshLayout 为listview时 divider颜色 -->
+    <color name="fragment_listview_divider_color">#FFEEEEEE</color>
+
+    <!--*****************************************************-->
+    <!-- Activity 或 Fragment 的颜色值  -->
+    <!--*****************************************************-->
+    <!--标题背景颜色-->
+    <color name="color_title_bar">#FF292929</color>
+    <color name="color_title_text">#FFFFFFFF</color>
+
+    <!--*****************************************************-->
+    <!-- 模式 的颜色值  -->
+    <!--*****************************************************-->
+    <color name="color_222222">#222222</color>
+    <color name="color_1e1e1e">#1e1e1e</color>
 </resources>

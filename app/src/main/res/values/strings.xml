@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">CrowClub</string>
+
+    <!-- refreshlayout 底部view的属性 -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="loadinfo_loadmore">加载更多</string>
+    <string name="loadinfo_loadmoreing">加载中</string>
+    <string name="loadinfo_loadmore_failed">加载失败，点此重试</string>
+
+    <!--*************************************************************-->
+    <!-- Activity 或 Fragment 的属性值 -->
+    <!--*************************************************************-->
+    <string name="user_story">我讲的故事</string>
 </resources>

@@ -1,16 +1,23 @@
 package com.sina.crowclub;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.Button;
 
-public class MainActivity extends AppCompatActivity {
+import com.sina.crowclub.view.activity.UserStoryActivity;
+import com.sina.crowclub.view.base.BaseFragmentActivity;
+
+public class MainActivity extends BaseFragmentActivity implements View.OnClickListener {
 
     private static final String TAG = "MainActivity";
 
-    private Button mBtnShow;
-    private Button mBtnOther;
+    /*** view **/
+    private Button mBtnUserStory;
 
+    /** data */
+
+    /****************************************************/
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,5 +26,23 @@ public class MainActivity extends AppCompatActivity {
          initViews();
     }
 
-    private void initViews(){}
+    private void initViews(){
+        mBtnUserStory = $(R.id.btn_user_story);
+
+        initData();
+    }
+
+    private void initData(){
+        mBtnUserStory.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.btn_user_story:
+                Intent intentUserStory = new Intent(MainActivity.this, UserStoryActivity.class);
+                startActivity(intentUserStory);
+                break;
+        }
+    }
 }
