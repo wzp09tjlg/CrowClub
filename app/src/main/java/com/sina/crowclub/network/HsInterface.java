@@ -1,6 +1,6 @@
 package com.sina.crowclub.network;
 
-import com.sina.crowclub.network.Parse.UserStoryList;
+import com.sina.crowclub.network.Parse.BaseBean;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -11,7 +11,7 @@ import retrofit2.http.GET;
  */
 public interface HsInterface {
 
-    @GET(UrlConstant.MY_STORY_URL)
-    Call<UserStoryList> getUserSotryList();
+    @GET(UrlConstant.MY_STORY_URL+"?")
+    Call<BaseBean> getUserSotryList();
 
 }

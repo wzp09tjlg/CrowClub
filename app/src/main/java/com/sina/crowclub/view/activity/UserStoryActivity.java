@@ -13,6 +13,7 @@ import com.sina.crowclub.widget.RefreshLayout;
 
 /**
  * Created by wu on 2016/7/15.
+ * 就是实现滑动的效果，具体网络数据 模拟就行。
  */
 public class UserStoryActivity extends BaseFragmentActivity {
     private static final String TAG = UserStoryActivity.class.getSimpleName();

@@ -7,12 +7,13 @@ import java.util.List;
  * Created by wu on 2016/7/15.
  */
 public class UserStoryList implements Serializable {
-   public int error_code;
-   public List<Data> data;
+    public int error_code;
+    public String tip_msg;
+    public Data data;
 
     public class Data  implements Serializable{
         public String count;
-        public Rows rows;
+        public List<Rows> rows;
 
         public class Rows implements Serializable{
             public int story_id;
