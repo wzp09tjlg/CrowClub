@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ListView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:cacheColorHint="#00000000"
+    android:divider="@color/fragment_listview_divider_color"
+    android:dividerHeight="@dimen/listview_divider_height"
+    android:fadingEdge="none"
+    android:fadingEdgeLength="0dip"
+    android:footerDividersEnabled="false"
+    android:headerDividersEnabled="false"
+    android:horizontalSpacing="0dp"
+    android:listSelector="@android:color/transparent"
+    android:overScrollMode="never" />
+
