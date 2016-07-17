@@ -13,5 +13,4 @@ public interface HsInterface {
 
     @GET(UrlConstant.MY_STORY_URL+"?")
     Call<BaseBean> getUserSotryList();
-
 }

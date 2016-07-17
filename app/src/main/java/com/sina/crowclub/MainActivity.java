@@ -8,8 +8,9 @@ import android.widget.Button;
 import com.sina.crowclub.view.activity.UserStoryActivity;
 import com.sina.crowclub.view.base.BaseFragmentActivity;
 
-public class MainActivity extends BaseFragmentActivity implements View.OnClickListener {
-
+public class MainActivity extends BaseFragmentActivity implements
+        View.OnClickListener
+{
     private static final String TAG = "MainActivity";
 
     /*** view **/
@@ -40,7 +41,10 @@ public class MainActivity extends BaseFragmentActivity implements View.OnClickLi
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.btn_user_story:
+                Bundle bundle = new Bundle();
+                bundle.putString("TITLE",getResources().getString(R.string.user_story));
                 Intent intentUserStory = new Intent(MainActivity.this, UserStoryActivity.class);
+                intentUserStory.putExtras(bundle);
                 startActivity(intentUserStory);
                 break;
         }

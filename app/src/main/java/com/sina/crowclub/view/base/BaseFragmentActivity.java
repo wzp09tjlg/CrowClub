@@ -14,4 +14,8 @@ public abstract class BaseFragmentActivity extends FragmentActivity {
         return (T)super.findViewById(id);
     }
 
+    protected <T extends View> T $(View view,int id){
+        return (T)view.findViewById(id);
+    }
+
 }

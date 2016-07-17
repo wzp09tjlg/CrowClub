@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -9,6 +9,43 @@
     <com.sina.crowclub.widget.RefreshLayout
         android:id="@+id/my_story_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:layout_below="@+id/title_layout"/>
 
-</LinearLayout>
+    <include android:id="@+id/layout_sort"
+        layout="@layout/view_story_sort"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/title_layout"/>
+
+    <include android:id="@+id/layout_type_sort"
+        layout="@layout/view_story_type_sort"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/layout_sort"/>
+
+    <include android:id="@+id/layout_type_sort_content"
+        layout="@layout/view_story_type_sort_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/layout_type_sort"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/layout_type_sort_content"
+        android:text="this is a test word"
+        android:textSize="80sp"
+        android:gravity="center"
+        android:visibility="gone"
+        />
+
+    <View android:id="@+id/view_story_type_sort_bottom_cover"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/layout_type_sort_content"
+        android:background="#33b2b2b2"
+        android:clickable="true"
+        android:visibility="gone"/>
+
+</RelativeLayout>
