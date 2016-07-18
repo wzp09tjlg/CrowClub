@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:orientation="vertical"
     android:background="#f7f7f7">
-
     <LinearLayout
-        android:id="@+id/layout_sort"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:orientation="horizontal">
@@ -14,55 +13,53 @@
             android:layout_height="match_parent"
             android:layout_weight="0.8" />
         <LinearLayout
-            android:id="@+id/layout_text_story"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:orientation="vertical">
             <TextView
-                android:id="@+id/text_story"
+                android:id="@+id/text_story_sort"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
                 android:text="@string/myStory"
-                android:textSize="15sp"
+                android:textSize="14sp"
+                android:gravity="center"
+                android:clickable="true"
                 android:textColor="@color/tag_sort_selector"
-                android:clickable="true"/>
-            <View
-                android:id="@+id/view_story_divider"
+                />
+            <View android:id="@+id/story_sort_divider"
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
-                android:background="@color/color_tab_text_select" />
+                />
         </LinearLayout>
         <View
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="0.1" />
+            android:layout_weight="0.1"
+            />
         <LinearLayout
-            android:id="@+id/layout_text_series"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:orientation="vertical">
             <TextView
-                android:id="@+id/text_series"
+                android:id="@+id/text_story_series"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
                 android:text="@string/mySeries"
-                android:textSize="15sp"
-                android:textColor="@color/tag_sort_selector"
-                android:clickable="true"/>
+                android:textSize="14sp"
+                android:gravity="center"
+                android:clickable="true"
+                android:textColor="@color/tag_sort_selector" />
             <View
-                android:id="@+id/view_series_divider"
+                android:id="@+id/story_series_divider"
                 android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:background="@color/color_tab_text_select" />
+                android:layout_height="2dp"/>
         </LinearLayout>
         <View
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="0.8" />
+            android:layout_weight="0.8"/>
     </LinearLayout>
 
     <View
@@ -71,4 +68,4 @@
         android:layout_height="0.5dp"
         android:background="@color/fragment_listview_divider_color"
         android:layout_below="@+id/layout_sort" />
-</RelativeLayout>
+</LinearLayout>

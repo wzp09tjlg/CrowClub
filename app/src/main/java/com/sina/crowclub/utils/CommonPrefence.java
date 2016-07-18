@@ -17,6 +17,7 @@ public class CommonPrefence {
         editor = sharedPreferences.edit();
     }
 
+    //保存数据
     public static void put(String key,String value){
         editor.putString(key,value);
         editor.commit();
@@ -50,6 +51,27 @@ public class CommonPrefence {
     public static void clear(){
         editor.clear();
         editor.commit();
+    }
+
+    //获取数据
+    public static String get(String key,String defualtValue){
+        return sharedPreferences.getString(key,defualtValue);
+    }
+
+    public static int get(String key,int defualtValue){
+        return sharedPreferences.getInt(key,defualtValue);
+    }
+
+    public static float get(String key,float defualtValue){
+        return sharedPreferences.getFloat(key,defualtValue);
+    }
+
+    public static long get(String key,long defualtValue){
+        return sharedPreferences.getLong(key,defualtValue);
+    }
+
+    public static boolean get(String key,boolean defualtValue){
+        return sharedPreferences.getBoolean(key,defualtValue);
     }
 
 }
