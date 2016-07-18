@@ -8,7 +8,8 @@
         android:id="@+id/layout_type_sort_wrapper"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:background="#f7f7f7">
     <LinearLayout
         android:id="@+id/layout_sort"
         android:layout_width="match_parent"

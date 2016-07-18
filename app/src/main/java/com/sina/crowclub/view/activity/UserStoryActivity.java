@@ -11,13 +11,17 @@ import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.PopupWindow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.sina.crowclub.R;
 import com.sina.crowclub.utils.CommonPrefence;
+import com.sina.crowclub.utils.LogUtil;
 import com.sina.crowclub.view.adapter.AbsBaseAdapter;
 import com.sina.crowclub.view.adapter.StoryBean;
 import com.sina.crowclub.view.base.BaseFragmentActivity;
+import com.sina.crowclub.view.widget.TypeSortPopupwindow;
 import com.sina.crowclub.widget.RefreshLayout;
 
 import java.util.ArrayList;
@@ -30,7 +34,8 @@ import java.util.Random;
  */
 public class UserStoryActivity extends BaseFragmentActivity implements
   RefreshLayout.OnLoadListener,ListView.OnScrollListener
-        ,View.OnClickListener
+        ,View.OnClickListener,TypeSortPopupwindow.ItemPopupWindowListener
+        ,PopupWindow.OnDismissListener
 {
     private static final String TAG = UserStoryActivity.class.getSimpleName();
     private static final String TITLE = "TITLE";
@@ -67,7 +72,10 @@ public class UserStoryActivity extends BaseFragmentActivity implements
 
     //浮层故事类型排序选项
     private ViewGroup viewTypeSortContentF;
-    private ListView listTypeSortContextF;
+    private ListView listTypeSortContentF;
+
+    //浮层故事类型排序选项背景
+    private View viewTypeSortContentBackgroud;
 
     //布局中排序
     private View viewSort;
@@ -97,6 +105,8 @@ public class UserStoryActivity extends BaseFragmentActivity implements
     private int mStorySortType = 0; // 0 表示按照时间 1 表示按照单个故事 2 表示按照连载
     private int mStorySortTypeTime = 0; //0 表示按照时间顺序 1表示按照时间逆序
     private int mStorySortTypeSeries = 0; // 表示选中的连载的位置 从0开始
+
+    private TypeSortPopupwindow typeSortPopupwindow;
 
     /************************************************************/
     @Override
@@ -148,8 +158,12 @@ public class UserStoryActivity extends BaseFragmentActivity implements
 
         //浮层故事类型排序选项
         viewTypeSortContentF = $(R.id.layout_type_sort_content);
-        listTypeSortContextF = $(R.id.list_story_type_sort_content);
+        listTypeSortContentF = $(R.id.list_story_type_sort_content);
         viewTypeSortContentF.setVisibility(View.GONE);
+
+        //浮层故事类型排序选项背景
+        viewTypeSortContentBackgroud = $(R.id.view_story_type_sort_bottom_cover);
+        viewTypeSortContentBackgroud.setVisibility(View.GONE);
 
         //布局排序
         viewSort = layoutInflater.inflate(R.layout.view_story_sort,null);//如果一开始不加入父布局,效果会怎样
@@ -169,6 +183,8 @@ public class UserStoryActivity extends BaseFragmentActivity implements
         textStorySeriesSort = $(viewTypeSort,R.id.text_sort_series);
         viewStoryTypeDivider = $(viewTypeSort,R.id.view_story_type_sort_bottom_divider);
         doOperateStorySortType((ViewGroup) viewTypeSort,mStorySortType);
+        if(mStorySort == 0)  viewTypeSortWrapper.setVisibility(View.VISIBLE);
+        else viewTypeSortWrapper.setVisibility(View.GONE);
         mRefreshLayout.addHeaderView(viewTypeSort);
 
         initData();
@@ -297,10 +313,9 @@ public class UserStoryActivity extends BaseFragmentActivity implements
                 doOperateSort(viewSortF,mStorySort);
                 doOperateSort((ViewGroup)viewSort,mStorySort);
 
-                mRefreshLayout.getListView().setSelection(0);
-
                 viewTypeSortWrapper.setVisibility(View.VISIBLE);
-
+                viewTypeSortWrapperF.setVisibility(View.VISIBLE);
+                mRefreshLayout.getListView().setSelection(0);
                 //设置adapter  和 请求数据
                 break;
             case R.id.text_series:
@@ -311,13 +326,20 @@ public class UserStoryActivity extends BaseFragmentActivity implements
                 doOperateSort(viewSortF,1);
                 doOperateSort((ViewGroup)viewSort,1);
 
-                mRefreshLayout.getListView().setSelection(0);
-
                 viewTypeSortWrapper.setVisibility(View.GONE);
-
+                viewTypeSortWrapperF.setVisibility(View.GONE);
+                mRefreshLayout.getListView().setSelection(0);
                 //设置adapter  和 请求数据
                 break;
             case R.id.text_sort_time:
+                List<String> mDataTime = new ArrayList<>();
+                mDataTime.add("时间顺序");
+                mDataTime.add("时间逆序");
+                typeSortPopupwindow = new TypeSortPopupwindow(mContext,0,mDataTime,this);
+                typeSortPopupwindow.setDismissListener(this);
+                typeSortPopupwindow.show(v);
+                showTypeSortContentBackgroud();
+
                 if(mStorySortType == 0) return;
                 mStorySortType = 0;
 
@@ -326,7 +348,7 @@ public class UserStoryActivity extends BaseFragmentActivity implements
                 doOperateStorySortType(viewTypeSortF,mStorySortType);
                 doOperateStorySortType((ViewGroup) viewTypeSort,mStorySortType);
 
-                // 设置 时间的adapter 处理点击事件
+                mRefreshLayout.getListView().setSelection(0);
                 break;
             case R.id.text_sort_single:
                 if(mStorySortType == 1) return;
@@ -337,9 +359,21 @@ public class UserStoryActivity extends BaseFragmentActivity implements
                 doOperateStorySortType(viewTypeSortF,mStorySortType);
                 doOperateStorySortType((ViewGroup) viewTypeSort,mStorySortType);
 
+                mRefreshLayout.getListView().setSelection(0);
                 //请求数据，刷新adapter
                 break;
             case R.id.text_sort_series:
+                List<String> mDataSeries = new ArrayList<>();
+                mDataSeries.add("我的连载1");
+                mDataSeries.add("我的连载2");
+                mDataSeries.add("我的连载3");
+                mDataSeries.add("我的连载4");
+                mDataSeries.add("我的连载5");
+                typeSortPopupwindow = new TypeSortPopupwindow(mContext,0,mDataSeries,this);
+                typeSortPopupwindow.setDismissListener(this);
+                typeSortPopupwindow.show(v);
+                showTypeSortContentBackgroud();
+
                 if(mStorySortType == 2) return;
                 mStorySortType = 2;
 
@@ -348,9 +382,28 @@ public class UserStoryActivity extends BaseFragmentActivity implements
                 doOperateStorySortType(viewTypeSortF,mStorySortType);
                 doOperateStorySortType((ViewGroup) viewTypeSort,mStorySortType);
 
+                mRefreshLayout.getListView().setSelection(0);
                 // 设置 连载的adapter 刷新数据， 处理点击事件
                 break;
         }
+    }
+
+    private void showTypeSortContentBackgroud(){
+        //因为不是在同一个父容器内,所以需要对坐标进行转换 (标题栏高度 + header1的高度 + header2的高度)  /
+        // 转换有问题,没有达到效果
+        int titleBottom = viewTitle.getBottom() + viewSort.getBottom() + viewTypeSortWrapper.getBottom() ;
+        LogUtil.e("titleBottom:" + titleBottom);
+        LogUtil.e("viewTitle.getBottom():" + viewTitle.getBottom());
+        LogUtil.e("viewSort.getBottom():" + viewSort.getBottom());
+        LogUtil.e("viewTypeSortWrapper.getBottom():" + viewTypeSortWrapper.getBottom());
+        int titleWidth = viewTypeSortWrapper.getWidth();
+        int refreshHeight = mRefreshLayout.getHeight();
+        viewTypeSortContentBackgroud.layout(0 , titleBottom ,titleWidth,titleBottom + refreshHeight);
+        viewTypeSortContentBackgroud.setVisibility(View.VISIBLE);
+    }
+
+    private void hideTypeSortContentBackgroud(){
+        viewTypeSortContentBackgroud.setVisibility(View.GONE);
     }
 
     /**
@@ -363,14 +416,14 @@ public class UserStoryActivity extends BaseFragmentActivity implements
 
     @Override
     public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
-        View firstView = view.getChildAt(0);
+        /**针对故事和连载排序 做浮层*/
+        View firstView = view.getChildAt(0); //这里获得的view可不是加载到list中的第一个view，
+        // 是滑动过程中显示在第一个的view
         int height = firstView.getHeight();
-        int bottom = firstView.getBottom();
         int top  = firstView.getTop();
 
         // 标题高度
         int titleHeight = viewTitle.getHeight();
-        int titleWidth = viewTitle.getWidth();
         int titleBottom = viewTitle.getBottom();
 
         // 浮层排序高度
@@ -401,5 +454,31 @@ public class UserStoryActivity extends BaseFragmentActivity implements
             viewSortF.layout(0,0,viewSortFWight,viewSortFHeight);
             viewSortF.invalidate();
         }
+
+        /**针对故事类型排序 做浮层*/
+        int viewTypeSortFWidth = viewTypeSortF.getWidth();
+        int viewTypeSortFHeight = viewTypeSortF.getHeight();
+
+        if(mStorySort == 0 && firstVisibleItem >= 1 && viewTypeSortWrapper.getVisibility() == View.VISIBLE){
+            viewTypeSortF.setVisibility(View.VISIBLE);
+            viewTypeSortF.layout(0,titleBottom,viewTypeSortFWidth,titleHeight + viewTypeSortFHeight);
+        }
+
+        if(mStorySort == 0 && viewTypeSortWrapper.getVisibility() == View.VISIBLE && viewSortFTop > 0){
+            viewTypeSortF.setVisibility(View.INVISIBLE);
+        }
+
+    }
+
+    @Override
+    public void onItemPopupWindowListener(View view, int position) {
+       if(typeSortPopupwindow != null)
+           typeSortPopupwindow.dismiss();
+        Toast.makeText(mContext,"position:" + position,Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void onDismiss() {
+        hideTypeSortContentBackgroud();
     }
 }
