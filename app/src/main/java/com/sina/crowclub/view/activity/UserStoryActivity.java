@@ -17,7 +17,6 @@ import android.widget.Toast;
 
 import com.sina.crowclub.R;
 import com.sina.crowclub.utils.CommonPrefence;
-import com.sina.crowclub.utils.LogUtil;
 import com.sina.crowclub.view.adapter.AbsBaseAdapter;
 import com.sina.crowclub.view.adapter.StoryBean;
 import com.sina.crowclub.view.base.BaseFragmentActivity;
@@ -391,15 +390,15 @@ public class UserStoryActivity extends BaseFragmentActivity implements
     private void showTypeSortContentBackgroud(){
         //因为不是在同一个父容器内,所以需要对坐标进行转换 (标题栏高度 + header1的高度 + header2的高度)  /
         // 转换有问题,没有达到效果
-        int titleBottom = viewTitle.getBottom() + viewSort.getBottom() + viewTypeSortWrapper.getBottom() ;
-        LogUtil.e("titleBottom:" + titleBottom);
-        LogUtil.e("viewTitle.getBottom():" + viewTitle.getBottom());
-        LogUtil.e("viewSort.getBottom():" + viewSort.getBottom());
-        LogUtil.e("viewTypeSortWrapper.getBottom():" + viewTypeSortWrapper.getBottom());
-        int titleWidth = viewTypeSortWrapper.getWidth();
-        int refreshHeight = mRefreshLayout.getHeight();
-        viewTypeSortContentBackgroud.layout(0 , titleBottom ,titleWidth,titleBottom + refreshHeight);
-        viewTypeSortContentBackgroud.setVisibility(View.VISIBLE);
+        int coverTop = viewTitle.getBottom() + Math.abs(viewSort.getBottom()) + Math.abs(viewTypeSortWrapper.getBottom()) ;
+
+        //做了处理，这里针对view进行布局layout，但是方法不管用。因为view是在最外层布局上，所以这里的针对view的位子做了改变
+        viewTypeSortContentBackgroud.setX(0f);
+        viewTypeSortContentBackgroud.setY(coverTop * 1.0f);
+        viewTypeSortContentBackgroud.invalidate(); //设置需要重新绘制吧，不然还是之前的动作
+
+        viewTypeSortContentBackgroud.setVisibility(View
+                .VISIBLE);
     }
 
     private void hideTypeSortContentBackgroud(){
