@@ -13,6 +13,7 @@
         android:paddingRight="@dimen/title_top_padding"
         android:paddingTop="@dimen/title_top_padding"
         android:scaleType="fitCenter"
+        android:clickable="true"
         android:src="@drawable/icon_back_titlebar"/>
 
     <ImageView

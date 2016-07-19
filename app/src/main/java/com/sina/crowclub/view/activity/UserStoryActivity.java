@@ -259,20 +259,22 @@ public class UserStoryActivity extends BaseFragmentActivity implements
 
           if(type == 0){
               textStoryTypeTime.setSelected(true);
-              textStoryTypeSingle.setSelected(false);
-              textStoryTypeSeries.setSelected(false);
+//              textStoryTypeSingle.setSelected(false);
+//              textStoryTypeSeries.setSelected(false);
           }else if(type == 1){
-              textStoryTypeTime.setSelected(false);
+              textStoryTypeTime.setSelected(true);
               textStoryTypeSingle.setSelected(true);
               textStoryTypeSeries.setSelected(false);
           }else if(type == 2){
-              textStoryTypeTime.setSelected(false);
+              textStoryTypeTime.setSelected(true);
               textStoryTypeSingle.setSelected(false);
               textStoryTypeSeries.setSelected(true);
           }
     }
 
     private void initListener(){
+        imgTitleBack.setOnClickListener(this);
+
         textStorySortF.setOnClickListener(this);
         textSeriesSortF.setOnClickListener(this);
 
@@ -304,6 +306,10 @@ public class UserStoryActivity extends BaseFragmentActivity implements
     @Override
     public void onClick(View v) {
         switch (v.getId()){
+            case R.id.title_left_img:
+                finish();
+                break;
+            /*****************************/
             case R.id.text_story:
                 if(mStorySort == 0) return;
                 mStorySort = 0;
@@ -331,18 +337,23 @@ public class UserStoryActivity extends BaseFragmentActivity implements
                 //设置adapter  和 请求数据
                 break;
             case R.id.text_sort_time:
-                List<String> mDataTime = new ArrayList<>();
-                mDataTime.add("时间顺序");
-                mDataTime.add("时间逆序");
-                typeSortPopupwindow = new TypeSortPopupwindow(mContext,0,mDataTime,this);
-                typeSortPopupwindow.setDismissListener(this);
-                typeSortPopupwindow.show(v);
-                showTypeSortContentBackgroud();
+//                List<String> mDataTime = new ArrayList<>();
+//                mDataTime.add("时间顺序");
+//                mDataTime.add("时间逆序");
+//                typeSortPopupwindow = new TypeSortPopupwindow(mContext,0,mDataTime,this);
+//                typeSortPopupwindow.setDismissListener(this);
+//                typeSortPopupwindow.show(v);
+//                showTypeSortContentBackgroud();
 
-                if(mStorySortType == 0) return;
-                mStorySortType = 0;
-
-                CommonPrefence.put(SORT_STORY_TYPE,0);
+                if(mStorySortTypeTime == 0){
+                    mStorySortTypeTime = 1;
+                    textStoryTimeSortF.setText("时间倒叙");
+                    textStoryTimeSort.setText("时间倒叙");
+                } else{
+                    mStorySortTypeTime = 0;
+                    textStoryTimeSortF.setText("时间正叙");
+                    textStoryTimeSort.setText("时间正叙");
+                }
 
                 doOperateStorySortType(viewTypeSortF,mStorySortType);
                 doOperateStorySortType((ViewGroup) viewTypeSort,mStorySortType);
@@ -416,57 +427,63 @@ public class UserStoryActivity extends BaseFragmentActivity implements
     @Override
     public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
         /**针对故事和连载排序 做浮层*/
-        View firstView = view.getChildAt(0); //这里获得的view可不是加载到list中的第一个view，
-        // 是滑动过程中显示在第一个的view
-        int height = firstView.getHeight();
-        int top  = firstView.getTop();
+        if(mStorySort == 1) {
+            View firstView = view.getChildAt(0); //这里获得的view可不是加载到list中的第一个view，
+            // 是滑动过程中显示在第一个的view
+            int height = firstView.getHeight();
+            int top = firstView.getTop();
 
-        // 标题高度
-        int titleHeight = viewTitle.getHeight();
-        int titleBottom = viewTitle.getBottom();
+            // 标题高度
+            int titleBottom = viewTitle.getBottom();
 
-        // 浮层排序高度
-        int viewSortFHeight = viewSortF.getHeight();
-        int viewSortFWight  = viewSortF.getWidth();
+            // 浮层排序高度
+            int viewSortFHeight = viewSortF.getHeight();
+            int viewSortFWight = viewSortF.getWidth();
 
-        //因为排序的高度和title的高度不一样，所以这里需要做两个判断，1是针对sort滑动之后做判断，
-        // 2是针对typesort滑动做 titleHeight - viewSortHeight 长度的判断，让浮层 viewSortF 滑动覆盖title
-        if(firstVisibleItem == 0){
-            int offset = top;
+            //因为排序的高度和title的高度不一样，所以这里需要做两个判断，1是针对sort滑动之后做判断，
+            // 2是针对typesort滑动做 titleHeight - viewSortHeight 长度的判断，让浮层 viewSortF 滑动覆盖title
+            if (firstVisibleItem == 0) {
+                int offset = top;
 
-            if(top < 0)
+                if (top < 0)
+                    viewSortF.setVisibility(View.VISIBLE);
+                else
+                    viewSortF.setVisibility(View.GONE);
+
+                if (Math.abs(offset) < height) {
+                    viewSortF.layout(0, titleBottom + offset, viewSortFWight
+                            , titleBottom + offset + viewSortFHeight);
+                    viewSortF.invalidate(); //要求重新绘制
+                }
+            }
+
+            int viewSortFTop = viewSortF.getTop(); //如果是滑动太快 会导致滚动方法调用不及时，可能没有显示出来，也可能显示出来zhilayout到一半的位置
+            if (firstVisibleItem > 0 && viewSortFTop > 0) {
                 viewSortF.setVisibility(View.VISIBLE);
-            else
-                viewSortF.setVisibility(View.GONE);
-
-            if(Math.abs(offset) < height){
-                viewSortF.layout(0,titleBottom + offset,viewSortFWight
-                        ,titleBottom + offset + viewSortFHeight);
-                //viewSortF.requestLayout();//没有效果 因为view的大小没有变化 只是位置变化了，所需要的动作是重新绘制
-                viewSortF.invalidate(); //要求重新绘制
+                viewSortF.layout(0, 0, viewSortFWight, viewSortFHeight);
+                viewSortF.invalidate();
             }
         }
 
-        int viewSortFTop = viewSortF.getTop(); //如果是滑动太快 会导致滚动方法调用不及时，可能没有显示出来，也可能显示出来zhilayout到一半的位置
-        if(firstVisibleItem > 0 && viewSortFTop > 0){
-            viewSortF.setVisibility(View.VISIBLE);
-            viewSortF.layout(0,0,viewSortFWight,viewSortFHeight);
-            viewSortF.invalidate();
-        }
-
         /**针对故事类型排序 做浮层*/
-        int viewTypeSortFWidth = viewTypeSortF.getWidth();
-        int viewTypeSortFHeight = viewTypeSortF.getHeight();
+        if(mStorySort == 0){
+           int storyTypeTop = viewTypeSort.getTop();
+            // 标题高度
+            int titleWidth = viewTitle.getWidth();
+            int titleHeight = viewTitle.getHeight();
+            int titleBottom = viewTitle.getBottom();
+            int viewTypeSortFHeight = viewTypeSortF.getHeight();
+           if(storyTypeTop < 0 && Math.abs(storyTypeTop) < titleHeight){
+               viewTypeSortF.setVisibility(View.VISIBLE);
+               viewTypeSortF.layout(0,titleBottom + storyTypeTop ,titleWidth,titleHeight + viewTypeSortFHeight);
+           }else if(storyTypeTop >= 0){
+               viewTypeSortF.setVisibility(View.INVISIBLE);
+           }
 
-        if(mStorySort == 0 && firstVisibleItem >= 1 && viewTypeSortWrapper.getVisibility() == View.VISIBLE){
-            viewTypeSortF.setVisibility(View.VISIBLE);
-            viewTypeSortF.layout(0,titleBottom,viewTypeSortFWidth,titleHeight + viewTypeSortFHeight);
+            if(firstVisibleItem > 1 && viewTypeSortF.isShown()){
+                viewTypeSortF.layout(0,0 ,titleWidth,titleHeight);
+            }
         }
-
-        if(mStorySort == 0 && viewTypeSortWrapper.getVisibility() == View.VISIBLE && viewSortFTop > 0){
-            viewTypeSortF.setVisibility(View.INVISIBLE);
-        }
-
     }
 
     @Override

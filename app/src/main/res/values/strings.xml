@@ -14,8 +14,8 @@
     <string name="user_story">我讲的故事</string>
     <string name="myStory">我的故事</string>
     <string name="mySeries">我的连载</string>
-    <string name="story_sort_time">时间顺序</string>
-    <string name="story_sort_time_reverse">时间倒序</string>
+    <string name="story_sort_time">时间正叙</string>
+    <string name="story_sort_time_reverse">时间倒叙</string>
     <string name="story_sort_single">单篇故事</string>
     <string name="story_sort_serise">连载故事</string>
 </resources>
