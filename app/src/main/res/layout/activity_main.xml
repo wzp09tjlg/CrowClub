@@ -23,4 +23,12 @@
         android:layout_marginTop="20dp"
         android:text="@string/user_message"/>
 
+    <Button
+        android:id="@+id/btn_user_series"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_user_message"
+        android:layout_marginTop="20dp"
+        android:text="@string/user_series"/>
+
 </RelativeLayout>

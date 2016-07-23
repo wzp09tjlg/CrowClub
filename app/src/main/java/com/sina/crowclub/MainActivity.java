@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.sina.crowclub.view.activity.MessageActivity;
+import com.sina.crowclub.view.activity.UserSeriesActivity;
 import com.sina.crowclub.view.activity.UserStoryActivity;
 import com.sina.crowclub.view.base.BaseFragmentActivity;
 
@@ -21,6 +22,8 @@ public class MainActivity extends BaseFragmentActivity implements
     /*** view **/
     private Button mBtnUserStory;
     private Button mBtnMessage;
+    private Button mBtnSeries;
+
     /** data */
 
     /****************************************************/
@@ -35,6 +38,7 @@ public class MainActivity extends BaseFragmentActivity implements
     private void initViews(){
         mBtnUserStory = $(R.id.btn_user_story);
         mBtnMessage = $(R.id.btn_user_message);
+        mBtnSeries = $(R.id.btn_user_series);
 
         initData();
     }
@@ -42,6 +46,7 @@ public class MainActivity extends BaseFragmentActivity implements
     private void initData(){
         mBtnUserStory.setOnClickListener(this);
         mBtnMessage.setOnClickListener(this);
+        mBtnSeries.setOnClickListener(this);
     }
 
     @Override
@@ -59,6 +64,12 @@ public class MainActivity extends BaseFragmentActivity implements
                 Intent intentUserMessage = new Intent(MainActivity.this, MessageActivity.class);
                 intentUserMessage.putExtras(bundle);
                 startActivity(intentUserMessage);
+                break;
+            case R.id.btn_user_series:
+                bundle.putString("TITLE",getResources().getString(R.string.user_series));
+                Intent intentUserSeries = new Intent(MainActivity.this, UserSeriesActivity.class);
+                intentUserSeries.putExtras(bundle);
+                startActivity(intentUserSeries);
                 break;
         }
     }

@@ -21,6 +21,8 @@
             android:screenOrientation="portrait"/>
         <activity android:name=".view.activity.MessageActivity"
             android:screenOrientation="portrait"/>
+        <activity android:name=".view.activity.UserSeriesActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

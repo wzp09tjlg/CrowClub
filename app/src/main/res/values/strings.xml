@@ -20,4 +20,8 @@
     <string name="story_sort_serise">连载故事</string>
     <!-- 用户消息 -->
     <string name="user_message">消息</string>
+    <!-- 用户连载-->
+    <string name="user_series">连载</string>
+    <string name="list_drag">list 展示拖拽</string>
+    <string name="grid_drag">grid 展示拖拽</string>
 </resources>
