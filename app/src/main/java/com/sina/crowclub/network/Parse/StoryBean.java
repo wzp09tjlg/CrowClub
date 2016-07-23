@@ -1,4 +1,4 @@
-package com.sina.crowclub.view.adapter;
+package com.sina.crowclub.network.Parse;
 
 import java.io.Serializable;
 
@@ -12,10 +12,11 @@ public class StoryBean implements Serializable {
     public boolean isSingle;
     public int albumId;
     public String albumName;
+    public boolean isEditable;
 
     @Override
     public String toString() {
         return "{id:"+id+";name:"+name+";create_time:"+create_time+";isSingle:"+isSingle
-                +";albumId:"+albumId+";albumName:"+albumName+"}";
+                +";albumId:"+albumId+";albumName:"+albumName+";isEditable:"+isEditable+"}";
     }
 }

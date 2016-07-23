@@ -1,4 +1,4 @@
-package com.sina.crowclub.widget;
+package com.sina.crowclub.view.widget;
 
 import android.content.Context;
 import android.content.res.TypedArray;

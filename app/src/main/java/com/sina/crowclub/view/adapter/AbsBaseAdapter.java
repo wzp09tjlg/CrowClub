@@ -8,6 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.sina.crowclub.R;
+import com.sina.crowclub.network.Parse.StoryBean;
 
 import java.util.List;
 

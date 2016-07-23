@@ -18,10 +18,10 @@ import android.widget.Toast;
 import com.sina.crowclub.R;
 import com.sina.crowclub.utils.CommonPrefence;
 import com.sina.crowclub.view.adapter.AbsBaseAdapter;
-import com.sina.crowclub.view.adapter.StoryBean;
+import com.sina.crowclub.network.Parse.StoryBean;
 import com.sina.crowclub.view.base.BaseFragmentActivity;
 import com.sina.crowclub.view.widget.TypeSortPopupwindow;
-import com.sina.crowclub.widget.RefreshLayout;
+import com.sina.crowclub.view.widget.RefreshLayout;
 
 import java.util.ArrayList;
 import java.util.List;
