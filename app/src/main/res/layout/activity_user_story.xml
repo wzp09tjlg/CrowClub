@@ -21,8 +21,7 @@
     <include android:id="@+id/layout_type_sort"
         layout="@layout/view_story_type_sort"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/layout_sort"/>
+        android:layout_height="wrap_content" />
 
     <include android:id="@+id/layout_type_sort_content"
         layout="@layout/view_story_type_sort_content"

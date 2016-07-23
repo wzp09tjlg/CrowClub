@@ -29,7 +29,7 @@ import java.util.Random;
 
 /**
  * Created by wu on 2016/7/15.
- * 就是实现滑动的效果，具体网络数据 模拟就行。
+ * 就是实现滑动浮层的效果，具体网络数据 模拟就行。
  */
 public class UserStoryActivity extends BaseFragmentActivity implements
   RefreshLayout.OnLoadListener,ListView.OnScrollListener
