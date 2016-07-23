@@ -103,14 +103,16 @@ public class UserSeriesActivity extends BaseFragmentActivity implements
                 fragment = new ListDragFragment();
                 Toast.makeText(mContext,"LIST fragmenr",Toast.LENGTH_SHORT).show();
                 fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.add(R.id.layout_content,fragment);
+                fragmentTransaction.replace(R.id.layout_content,fragment);
+                //fragmentTransaction.add(R.id.layout_content,fragment);
                 fragmentTransaction.commit();
                 break;
             case R.id.btn_grid_drag:
                 fragment = new GridDragFragment();
                 Toast.makeText(mContext,"GRID fragmenr",Toast.LENGTH_SHORT).show();
                 fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.add(R.id.layout_content,fragment);
+                fragmentTransaction.replace(R.id.layout_content,fragment);
+                //fragmentTransaction.add(R.id.layout_content,fragment);
                 fragmentTransaction.commit();
                 break;
         }
