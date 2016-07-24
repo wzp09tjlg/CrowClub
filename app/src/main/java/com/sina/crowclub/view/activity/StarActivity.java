@@ -1,5 +1,6 @@
 package com.sina.crowclub.view.activity;
 
+import android.content.Context;
 import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -42,6 +43,7 @@ public class StarActivity extends BaseFragmentActivity implements
     private Button btnCancel;
 
     /** Data */
+    private Context mContext;
     private static int mState = 0;
 
     private static String mName = "";
@@ -82,6 +84,8 @@ public class StarActivity extends BaseFragmentActivity implements
     }
 
     private void initData(){
+        mContext = this;
+
         initListener();
     }
 
@@ -97,7 +101,6 @@ public class StarActivity extends BaseFragmentActivity implements
 
     @Override
     public void onClick(View v) {
-
         switch (v.getId()){
             case R.id.btn_text_color:
                 mCountTextColor =  (++mCountTextColor) % mTextColor.length;
@@ -126,6 +129,7 @@ public class StarActivity extends BaseFragmentActivity implements
                 mState = STATE_OK;
                 mName = edtName.getText().toString();
                 setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);//改变方向之后 会重新绘制
+
                 break;
             case R.id.btn_back:
                 mState = STATE_APPLY;
@@ -153,16 +157,16 @@ public class StarActivity extends BaseFragmentActivity implements
         super.onResume();
         mName = edtName.getText().toString();
         ColorDrawable colorDrawable = null;
-        LogUtil.e("onResume   mState:" + mState);
+        LogUtil.e("onResume   mState:" + mState + "  mName:" + mName);
 
         if(mState == STATE_OK){
             layoutSetting.setVisibility(View.GONE);
             colorDrawable = new ColorDrawable(mBgColor[mCountBgColor]);
-            textShow.setBackgroundDrawable(colorDrawable);
+//            textShow.setBackgroundDrawable();
             textShow.setText(mName);
             textShow.setTextColor(mTextColor[mCountTextColor]);
             textShow.setTextSize(mTextSize[mCountTextSize]);
-
+            textShow.invalidate();//重画一下 看看是否有效果
             btnCancel.setVisibility(View.VISIBLE);
         }else{
             colorDrawable = new ColorDrawable(mBgColor[mCountBgColor]);

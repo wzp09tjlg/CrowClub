@@ -7,6 +7,7 @@
         android:id="@+id/layout_setting"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <EditText
             android:id="@+id/edt_star_name"
             android:layout_width="match_parent"
@@ -76,9 +77,10 @@
 
     <TextView
         android:id="@+id/text_show"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center"
+        android:layout_width="1000dp"
+        android:layout_height="1000dp"
+        android:layout_gravity="bottom"
+        android:background="#f00"
         android:singleLine="true"
         android:ellipsize="marquee"
         android:marqueeRepeatLimit="marquee_forever"/>
