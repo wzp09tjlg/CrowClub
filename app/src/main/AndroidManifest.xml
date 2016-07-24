@@ -23,6 +23,9 @@
             android:screenOrientation="portrait"/>
         <activity android:name=".view.activity.UserSeriesActivity"
             android:screenOrientation="portrait"/>
+        <activity android:name=".view.activity.StarActivity"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation|keyboardHidden"/>
     </application>
 
 </manifest>

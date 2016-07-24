@@ -31,4 +31,12 @@
         android:layout_marginTop="20dp"
         android:text="@string/user_series"/>
 
+    <Button
+        android:id="@+id/btn_star"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_user_series"
+        android:layout_marginTop="20dp"
+        android:text="@string/star"/>
+
 </RelativeLayout>

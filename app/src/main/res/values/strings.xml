@@ -24,4 +24,6 @@
     <string name="user_series">连载</string>
     <string name="list_drag">list 展示拖拽</string>
     <string name="grid_drag">grid 展示拖拽</string>
+    <!-- 明星签名-->
+    <string name="star">明星签名</string>
 </resources>
