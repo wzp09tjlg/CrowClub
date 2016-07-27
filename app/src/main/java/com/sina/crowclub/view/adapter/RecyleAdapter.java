@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.sina.crowclub.R;
 import com.sina.crowclub.network.Parse.StoryBean;
 import com.sina.crowclub.utils.CommonHelper;
+import com.sina.crowclub.view.fragment.listener.OnListItemClickListener;
 import com.sina.crowclub.view.widget.helper.ItemTouchHelperAdapter;
 import com.sina.crowclub.view.widget.helper.ItemTouchHelperViewHolder;
 import com.sina.crowclub.view.widget.helper.OnStartDragListener;
@@ -29,10 +30,13 @@ public class RecyleAdapter extends RecyclerView.Adapter<RecyleAdapter.ViewHolder
     private static final String TAG = RecyleAdapter.class.getSimpleName();
     private List<StoryBean> mData;
     private OnStartDragListener mOnStartDragListener;
+    private OnListItemClickListener<StoryBean> mOnListItemClickListener;
 
-    public RecyleAdapter(List<StoryBean> data,OnStartDragListener onStartDragListener){
+    public RecyleAdapter(List<StoryBean> data,OnStartDragListener onStartDragListener
+            ,OnListItemClickListener<StoryBean> onListItemClickListener){
         mData = data;
         mOnStartDragListener = onStartDragListener;
+        mOnListItemClickListener = onListItemClickListener;
     }
 
     @Override
@@ -43,8 +47,8 @@ public class RecyleAdapter extends RecyclerView.Adapter<RecyleAdapter.ViewHolder
     }
 
     @Override
-    public void onBindViewHolder(final ViewHolder holder, int position) {
-        StoryBean bean = mData.get(position);
+    public void onBindViewHolder(final ViewHolder holder, final int position) {
+        final StoryBean bean = mData.get(position);
         holder.textName.setText(bean.name);
         holder.imgDrag.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -54,6 +58,14 @@ public class RecyleAdapter extends RecyclerView.Adapter<RecyleAdapter.ViewHolder
                 return false;
             }
         });
+        if(mOnListItemClickListener != null){
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mOnListItemClickListener.onListItemClickListener(v,position,bean);
+                }
+            });
+        }
     }
 
     @Override

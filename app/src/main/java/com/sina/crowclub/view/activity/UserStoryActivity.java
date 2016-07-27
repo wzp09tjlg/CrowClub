@@ -21,7 +21,7 @@ import com.sina.crowclub.view.adapter.AbsBaseAdapter;
 import com.sina.crowclub.network.Parse.StoryBean;
 import com.sina.crowclub.view.base.BaseFragmentActivity;
 import com.sina.crowclub.view.widget.TypeSortPopupwindow;
-import com.sina.crowclub.view.widget.RefreshLayout;
+import com.sina.crowclub.view.widget.RefreshList.RefreshLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,7 +32,7 @@ import java.util.Random;
  * 就是实现滑动浮层的效果，具体网络数据 模拟就行。
  */
 public class UserStoryActivity extends BaseFragmentActivity implements
-  RefreshLayout.OnLoadListener,ListView.OnScrollListener
+        RefreshLayout.OnLoadListener,ListView.OnScrollListener
         ,View.OnClickListener,TypeSortPopupwindow.ItemPopupWindowListener
         ,PopupWindow.OnDismissListener
 {

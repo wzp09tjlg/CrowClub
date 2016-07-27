@@ -19,7 +19,7 @@ import com.sina.crowclub.network.Parse.StoryBean;
 import com.sina.crowclub.utils.CommonHelper;
 import com.sina.crowclub.view.adapter.AbsBaseAdapter;
 import com.sina.crowclub.view.base.BaseFragmentActivity;
-import com.sina.crowclub.view.widget.RefreshLayout;
+import com.sina.crowclub.view.widget.RefreshList.RefreshLayout;
 import com.sina.crowclub.view.widget.swipe.SwipeMenu;
 import com.sina.crowclub.view.widget.swipe.SwipeMenuCreator;
 import com.sina.crowclub.view.widget.swipe.SwipeMenuItem;

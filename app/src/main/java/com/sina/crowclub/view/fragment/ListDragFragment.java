@@ -11,11 +11,13 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.sina.crowclub.R;
 import com.sina.crowclub.network.Parse.StoryBean;
 import com.sina.crowclub.view.adapter.RecyleAdapter;
 import com.sina.crowclub.view.base.BaseFragment;
+import com.sina.crowclub.view.fragment.listener.OnListItemClickListener;
 import com.sina.crowclub.view.widget.helper.ItemTouchHelperAdapter;
 import com.sina.crowclub.view.widget.helper.OnStartDragListener;
 import com.sina.crowclub.view.widget.helper.SimpleItemTouchHelperCallback;
@@ -39,6 +41,8 @@ public class ListDragFragment extends BaseFragment {
 
     private OnStartDragListener mOnStartDragListener;
     private ItemTouchHelper mItemTouchHelper;
+
+    private OnListItemClickListener<StoryBean> mOnListItemClickListener;
 
     @Nullable
     @Override
@@ -78,7 +82,7 @@ public class ListDragFragment extends BaseFragment {
             mData.add(bean);
         }
 
-        recyleAdapter = new RecyleAdapter(mData,getOnStartDragListener());
+        recyleAdapter = new RecyleAdapter(mData,getOnStartDragListener(),getOnListItemClickListener());
 
         recyclerView.setHasFixedSize(true); //改变recycleView 时，固定recycleView的数量大小
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
@@ -192,6 +196,16 @@ public class ListDragFragment extends BaseFragment {
             }
         };
         return itemDecoration;
+    }
+
+    private OnListItemClickListener<StoryBean> getOnListItemClickListener(){
+        mOnListItemClickListener = new OnListItemClickListener<StoryBean>() {
+            @Override
+            public void onListItemClickListener(View view, int position, StoryBean bean) {
+                Toast.makeText(getActivity(),"position:" + position + "  bean:" + bean,Toast.LENGTH_SHORT).show();
+            }
+        };
+        return mOnListItemClickListener;
     }
 
 }

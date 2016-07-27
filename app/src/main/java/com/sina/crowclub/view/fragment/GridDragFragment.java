@@ -83,7 +83,8 @@ public class GridDragFragment extends BaseFragment {
             mData.add(bean);
         }
 
-        recyleAdapter = new RecyleAdapter(mData,getOnStartDragListener());
+        recyleAdapter = new RecyleAdapter(mData,getOnStartDragListener()
+                ,null);
 
         recyclerView.setHasFixedSize(true); //改变recycleView 时，固定recycleView的数量大小
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(),2);
