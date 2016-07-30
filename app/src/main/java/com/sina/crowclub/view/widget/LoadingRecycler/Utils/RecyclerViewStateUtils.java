@@ -1,12 +1,12 @@
-package com.sina.crowclub.view.widget.RefreshRecycler.Utils;
+package com.sina.crowclub.view.widget.LoadingRecycler.Utils;
 
 import android.app.Activity;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-import com.sina.crowclub.view.widget.RefreshRecycler.HeaderAndFooterRecyclerViewAdapter;
-import com.sina.crowclub.view.widget.RefreshRecycler.RecyclerViewUtils;
-import com.sina.crowclub.view.widget.RefreshRecycler.ViewTer.LoadingFooter;
+import com.sina.crowclub.view.widget.LoadingRecycler.HeaderAndFooterRecyclerViewAdapter;
+import com.sina.crowclub.view.widget.LoadingRecycler.RecyclerViewUtils;
+import com.sina.crowclub.view.widget.LoadingRecycler.ViewTer.LoadingFooter;
 
 
 /**

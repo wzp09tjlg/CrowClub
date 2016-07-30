@@ -1,4 +1,4 @@
-package com.sina.crowclub.view.widget.RefreshRecycler.ViewTer;
+package com.sina.crowclub.view.widget.LoadingRecycler.ViewTer;
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -8,7 +8,7 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-
+import com.sina.crowclub.R;
 
 /**
  * Created by cundong on 2015/10/9.

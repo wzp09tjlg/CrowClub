@@ -32,6 +32,12 @@ public class RecyleAdapter extends RecyclerView.Adapter<RecyleAdapter.ViewHolder
     private OnStartDragListener mOnStartDragListener;
     private OnListItemClickListener<StoryBean> mOnListItemClickListener;
 
+    public RecyleAdapter(List<StoryBean> data){
+        mData = data;
+        mOnStartDragListener = null;
+        mOnListItemClickListener = null;
+    }
+
     public RecyleAdapter(List<StoryBean> data,OnStartDragListener onStartDragListener
             ,OnListItemClickListener<StoryBean> onListItemClickListener){
         mData = data;
@@ -50,14 +56,17 @@ public class RecyleAdapter extends RecyclerView.Adapter<RecyleAdapter.ViewHolder
     public void onBindViewHolder(final ViewHolder holder, final int position) {
         final StoryBean bean = mData.get(position);
         holder.textName.setText(bean.name);
-        holder.imgDrag.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                if(MotionEventCompat.getActionMasked(event) == MotionEvent.ACTION_DOWN)
-                    mOnStartDragListener.onStartDrag(holder);
-                return false;
-            }
-        });
+        if(mOnStartDragListener != null){
+            holder.imgDrag.setOnTouchListener(new View.OnTouchListener() {
+                @Override
+                public boolean onTouch(View v, MotionEvent event) {
+                    if(MotionEventCompat.getActionMasked(event) == MotionEvent.ACTION_DOWN)
+                        mOnStartDragListener.onStartDrag(holder);
+                    return false;
+                }
+            });
+        }
+
         if(mOnListItemClickListener != null){
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

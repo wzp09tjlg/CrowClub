@@ -17,7 +17,7 @@ import com.sina.crowclub.R;
 import com.sina.crowclub.view.base.BaseFragment;
 import com.sina.crowclub.view.base.BaseFragmentActivity;
 import com.sina.crowclub.view.fragment.GridDragFragment;
-import com.sina.crowclub.view.fragment.ListDragFragment;
+import com.sina.crowclub.view.fragment.ListDrag2Fragment;
 
 /**
  * Created by wu on 2016/7/23.
@@ -100,7 +100,8 @@ public class UserSeriesActivity extends BaseFragmentActivity implements
                 finish();
                 break;
             case R.id.btn_list_drag:
-                fragment = new ListDragFragment();
+                //fragment = new ListDragFragment();
+                fragment = new ListDrag2Fragment();
                 Toast.makeText(mContext,"LIST fragmenr",Toast.LENGTH_SHORT).show();
                 fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.layout_content,fragment);

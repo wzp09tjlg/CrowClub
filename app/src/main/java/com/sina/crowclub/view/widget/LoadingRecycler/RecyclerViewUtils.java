@@ -1,4 +1,4 @@
-package com.sina.crowclub.view.widget.RefreshRecycler;
+package com.sina.crowclub.view.widget.LoadingRecycler;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;

@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.sina.crowclub.view.activity.MessageActivity;
+import com.sina.crowclub.view.activity.RefreshRecyclerActivity;
 import com.sina.crowclub.view.activity.StarActivity;
 import com.sina.crowclub.view.activity.UserSeriesActivity;
 import com.sina.crowclub.view.activity.UserStoryActivity;
@@ -25,6 +26,7 @@ public class MainActivity extends BaseFragmentActivity implements
     private Button mBtnMessage;
     private Button mBtnSeries;
     private Button mBtnStar;
+    private Button mBtnRefreshRecycler;
 
     /** data */
 
@@ -42,6 +44,7 @@ public class MainActivity extends BaseFragmentActivity implements
         mBtnMessage = $(R.id.btn_user_message);
         mBtnSeries = $(R.id.btn_user_series);
         mBtnStar = $(R.id.btn_star);
+        mBtnRefreshRecycler = $(R.id.btn_refresh_recycler);
         initData();
     }
 
@@ -50,6 +53,7 @@ public class MainActivity extends BaseFragmentActivity implements
         mBtnMessage.setOnClickListener(this);
         mBtnSeries.setOnClickListener(this);
         mBtnStar.setOnClickListener(this);
+        mBtnRefreshRecycler.setOnClickListener(this);
     }
 
     @Override
@@ -77,6 +81,12 @@ public class MainActivity extends BaseFragmentActivity implements
             case R.id.btn_star:
                 Intent intentStar = new Intent(MainActivity.this, StarActivity.class);
                 startActivity(intentStar);
+                break;
+            case R.id.btn_refresh_recycler:
+                bundle.putString("TITLE",getResources().getString(R.string.refreshRecycler));
+                Intent intentRefreshRecycler = new Intent(MainActivity.this, RefreshRecyclerActivity.class);
+                intentRefreshRecycler.putExtras(bundle);
+                startActivity(intentRefreshRecycler);
                 break;
         }
     }

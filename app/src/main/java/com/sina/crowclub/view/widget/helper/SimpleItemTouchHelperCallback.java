@@ -37,8 +37,15 @@ public class SimpleItemTouchHelperCallback extends ItemTouchHelper.Callback {
 
     private final ItemTouchHelperAdapter mAdapter;
 
+    private boolean isItemSwipeAble = true;
+
     public SimpleItemTouchHelperCallback(ItemTouchHelperAdapter adapter) {
         mAdapter = adapter;
+    }
+
+    public SimpleItemTouchHelperCallback(ItemTouchHelperAdapter adapter,boolean isItemSwipeAble) {
+        mAdapter = adapter;
+        this.isItemSwipeAble = isItemSwipeAble;
     }
 
     @Override
@@ -48,7 +55,7 @@ public class SimpleItemTouchHelperCallback extends ItemTouchHelper.Callback {
 
     @Override
     public boolean isItemViewSwipeEnabled() {
-        return true;
+        return isItemSwipeAble;
     }
 
     @Override

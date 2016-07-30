@@ -33,4 +33,6 @@
     <string name="grid_drag">grid 展示拖拽</string>
     <!-- 明星签名-->
     <string name="star">明星签名</string>
+    <!-- RefreshRecycler-->
+    <string name="refreshRecycler">refreshRecycler</string>
 </resources>
