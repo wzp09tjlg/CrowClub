@@ -35,4 +35,6 @@
     <string name="star">明星签名</string>
     <!-- RefreshRecycler-->
     <string name="refreshRecycler">refreshRecycler</string>
+    <!-- 连载页面-->
+    <string name="album">连载</string>
 </resources>

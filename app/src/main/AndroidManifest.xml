@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.sina.crowclub">
 
+    <uses-permission android:name="android.permission.VIBRATE"/>
+
     <application
         android:name=".MApplication"
         android:allowBackup="true"
@@ -27,6 +29,12 @@
             android:screenOrientation="portrait"
             android:configChanges="orientation|keyboardHidden"/>
         <activity android:name=".view.activity.RefreshRecyclerActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".view.activity.AlbumActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".view.activity.TestActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".view.activity.Test2Activity"
             android:screenOrientation="portrait"/>
     </application>
 

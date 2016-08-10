@@ -1,5 +1,6 @@
 package com.sina.crowclub;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.widget.Button;
 import com.sina.crowclub.view.activity.MessageActivity;
 import com.sina.crowclub.view.activity.RefreshRecyclerActivity;
 import com.sina.crowclub.view.activity.StarActivity;
+import com.sina.crowclub.view.activity.Test2Activity;
 import com.sina.crowclub.view.activity.UserSeriesActivity;
 import com.sina.crowclub.view.activity.UserStoryActivity;
 import com.sina.crowclub.view.base.BaseFragmentActivity;
@@ -27,8 +29,10 @@ public class MainActivity extends BaseFragmentActivity implements
     private Button mBtnSeries;
     private Button mBtnStar;
     private Button mBtnRefreshRecycler;
+    private Button mBtnAlbum;
 
     /** data */
+    private Context mContext;
 
     /****************************************************/
     @Override
@@ -45,15 +49,19 @@ public class MainActivity extends BaseFragmentActivity implements
         mBtnSeries = $(R.id.btn_user_series);
         mBtnStar = $(R.id.btn_star);
         mBtnRefreshRecycler = $(R.id.btn_refresh_recycler);
+        mBtnAlbum = $(R.id.btn_album);
         initData();
     }
 
     private void initData(){
+        mContext = this;
+
         mBtnUserStory.setOnClickListener(this);
         mBtnMessage.setOnClickListener(this);
         mBtnSeries.setOnClickListener(this);
         mBtnStar.setOnClickListener(this);
         mBtnRefreshRecycler.setOnClickListener(this);
+        mBtnAlbum.setOnClickListener(this);
     }
 
     @Override
@@ -87,6 +95,10 @@ public class MainActivity extends BaseFragmentActivity implements
                 Intent intentRefreshRecycler = new Intent(MainActivity.this, RefreshRecyclerActivity.class);
                 intentRefreshRecycler.putExtras(bundle);
                 startActivity(intentRefreshRecycler);
+                break;
+            case R.id.btn_album:
+                //AlbumActivity.launch(mContext,"连载");
+                startActivity(new Intent(MainActivity.this,Test2Activity.class));
                 break;
         }
     }

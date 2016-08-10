@@ -3,4 +3,20 @@
     <declare-styleable name="RefreshLayout">
         <attr name="list_view_layout" format="reference" />
     </declare-styleable>
+
+    <!-- DragGrid 的自定义属性 -->
+    <declare-styleable name="DragGrid">
+        <!--列数-->
+        <attr name="numColumn" format="integer"/>
+        <!--固定不动个数-->
+        <attr name="numFixed" format="integer"/>
+        <!--放大的倍数-->
+        <attr name="dragScale" format="float"/>
+        <!--水平间距-->
+        <attr name="horizontalSpace" format="dimension"/>
+        <!--垂直间距-->
+        <attr name="verticalSpace" format="dimension"/>
+        <!--透明的系数-->
+        <attr name="alphaScale" format="float"/>
+    </declare-styleable>
 </resources>

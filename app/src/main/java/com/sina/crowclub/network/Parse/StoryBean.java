@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  * Created by wu on 2016/7/17.
  */
-public class StoryBean implements Serializable {
+public class StoryBean implements Serializable,Cloneable {
     public int id;
     public String name;
     public int create_time;
@@ -13,6 +13,11 @@ public class StoryBean implements Serializable {
     public int albumId;
     public String albumName;
     public boolean isEditable;
+
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        return super.clone();
+    }
 
     @Override
     public String toString() {

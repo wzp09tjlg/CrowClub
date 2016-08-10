@@ -27,6 +27,13 @@ android {
             signingConfig signingConfigs.config
         }
 
+        compileOptions {
+            sourceCompatibility JavaVersion.VERSION_1_7
+            targetCompatibility JavaVersion.VERSION_1_7
+        }
+
+        useLibrary('org.apache.http.legacy')
+
         debug {
             signingConfig signingConfigs.config
         }
