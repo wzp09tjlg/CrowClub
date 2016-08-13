@@ -6,10 +6,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.sina.crowclub.view.activity.AlbumDetailActivity;
+import com.sina.crowclub.view.activity.LoadDragActivity;
 import com.sina.crowclub.view.activity.MessageActivity;
 import com.sina.crowclub.view.activity.RefreshRecyclerActivity;
 import com.sina.crowclub.view.activity.StarActivity;
-import com.sina.crowclub.view.activity.Test2Activity;
 import com.sina.crowclub.view.activity.UserSeriesActivity;
 import com.sina.crowclub.view.activity.UserStoryActivity;
 import com.sina.crowclub.view.base.BaseFragmentActivity;
@@ -30,6 +31,7 @@ public class MainActivity extends BaseFragmentActivity implements
     private Button mBtnStar;
     private Button mBtnRefreshRecycler;
     private Button mBtnAlbum;
+    private Button mBtnAlbumDetail;
 
     /** data */
     private Context mContext;
@@ -50,6 +52,7 @@ public class MainActivity extends BaseFragmentActivity implements
         mBtnStar = $(R.id.btn_star);
         mBtnRefreshRecycler = $(R.id.btn_refresh_recycler);
         mBtnAlbum = $(R.id.btn_album);
+        mBtnAlbumDetail = $(R.id.btn_album_detail);
         initData();
     }
 
@@ -62,6 +65,7 @@ public class MainActivity extends BaseFragmentActivity implements
         mBtnStar.setOnClickListener(this);
         mBtnRefreshRecycler.setOnClickListener(this);
         mBtnAlbum.setOnClickListener(this);
+        mBtnAlbumDetail.setOnClickListener(this);
     }
 
     @Override
@@ -98,7 +102,18 @@ public class MainActivity extends BaseFragmentActivity implements
                 break;
             case R.id.btn_album:
                 //AlbumActivity.launch(mContext,"连载");
-                startActivity(new Intent(MainActivity.this,Test2Activity.class));
+                Bundle bundle1 = new Bundle();
+                //bundle.putString("DATA","123");
+                Intent intent = new Intent(MainActivity.this,LoadDragActivity.class);
+                intent.putExtras(bundle1);
+                startActivity(intent);
+                break;
+            case R.id.btn_album_detail:
+                Bundle bundle2 = new Bundle();
+                bundle2.putString("TITLE","ALBUM DETAIL");
+                Intent intent1 = new Intent(MainActivity.this, AlbumDetailActivity.class);
+                intent1.putExtras(bundle2);
+                startActivity(intent1);
                 break;
         }
     }

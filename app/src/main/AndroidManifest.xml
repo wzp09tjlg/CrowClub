@@ -36,6 +36,12 @@
             android:screenOrientation="portrait"/>
         <activity android:name=".view.activity.Test2Activity"
             android:screenOrientation="portrait"/>
+        <activity android:name=".view.activity.SelfListActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".view.activity.LoadDragActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".view.activity.AlbumDetailActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

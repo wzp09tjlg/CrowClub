@@ -13,7 +13,7 @@ import java.util.Stack;
  */
 public class MApplication extends Application {
     private static final String TAG = "MApplication";
-    private static Context mContext;
+    public static Context mContext;
 
     private Stack<BaseFragmentActivity> activities;
 

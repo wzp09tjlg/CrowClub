@@ -37,4 +37,6 @@
     <string name="refreshRecycler">refreshRecycler</string>
     <!-- 连载页面-->
     <string name="album">连载</string>
+    <!-- 连载详情页面-->
+    <string name="album_detail">连载详情</string>
 </resources>
