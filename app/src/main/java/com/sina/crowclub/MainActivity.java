@@ -6,13 +6,15 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import com.sina.crowclub.view.activity.AlbumDetailActivity;
+import com.sina.crowclub.view.activity.CacheActivity;
+import com.sina.crowclub.view.activity.FragmentHandleActivity;
 import com.sina.crowclub.view.activity.LoadDragActivity;
 import com.sina.crowclub.view.activity.MessageActivity;
 import com.sina.crowclub.view.activity.RefreshRecyclerActivity;
 import com.sina.crowclub.view.activity.StarActivity;
+import com.sina.crowclub.view.activity.TestActivity;
 import com.sina.crowclub.view.activity.UserSeriesActivity;
-import com.sina.crowclub.view.activity.UserStoryActivity;
+import com.sina.crowclub.view.activity.WebViewActivity;
 import com.sina.crowclub.view.base.BaseFragmentActivity;
 
 /**
@@ -22,7 +24,7 @@ import com.sina.crowclub.view.base.BaseFragmentActivity;
 public class MainActivity extends BaseFragmentActivity implements
         View.OnClickListener
 {
-    private static final String TAG = "MainActivity";
+    private final String TAG = "MainActivity";
 
     /*** view **/
     private Button mBtnUserStory;
@@ -32,6 +34,8 @@ public class MainActivity extends BaseFragmentActivity implements
     private Button mBtnRefreshRecycler;
     private Button mBtnAlbum;
     private Button mBtnAlbumDetail;
+    private Button mBtnFragmentHandler;
+    private Button mBtnWebView;
 
     /** data */
     private Context mContext;
@@ -53,6 +57,8 @@ public class MainActivity extends BaseFragmentActivity implements
         mBtnRefreshRecycler = $(R.id.btn_refresh_recycler);
         mBtnAlbum = $(R.id.btn_album);
         mBtnAlbumDetail = $(R.id.btn_album_detail);
+        mBtnFragmentHandler = $(R.id.btn_fragment_handler);
+        mBtnWebView = $(R.id.btn_webview);
         initData();
     }
 
@@ -66,6 +72,8 @@ public class MainActivity extends BaseFragmentActivity implements
         mBtnRefreshRecycler.setOnClickListener(this);
         mBtnAlbum.setOnClickListener(this);
         mBtnAlbumDetail.setOnClickListener(this);
+        mBtnFragmentHandler.setOnClickListener(this);
+        mBtnWebView.setOnClickListener(this);
     }
 
     @Override
@@ -74,7 +82,8 @@ public class MainActivity extends BaseFragmentActivity implements
         switch (v.getId()){
             case R.id.btn_user_story:
                 bundle.putString("TITLE",getResources().getString(R.string.user_story));
-                Intent intentUserStory = new Intent(MainActivity.this, UserStoryActivity.class);
+                Intent intentUserStory = new Intent(MainActivity.this, TestActivity.class);//
+                // UserStoryActivity.class);
                 intentUserStory.putExtras(bundle);
                 startActivity(intentUserStory);
                 break;
@@ -111,9 +120,23 @@ public class MainActivity extends BaseFragmentActivity implements
             case R.id.btn_album_detail:
                 Bundle bundle2 = new Bundle();
                 bundle2.putString("TITLE","ALBUM DETAIL");
-                Intent intent1 = new Intent(MainActivity.this, AlbumDetailActivity.class);
+                Intent intent1 = new Intent(MainActivity.this, CacheActivity.class);
                 intent1.putExtras(bundle2);
                 startActivity(intent1);
+                break;
+            case R.id.btn_fragment_handler:
+                Bundle bundleFragmentHandler = new Bundle();
+                bundleFragmentHandler.putString("TITLE","FRAGMENTAHNDLER");
+                Intent intentFragmentHandler =new Intent(MainActivity.this, FragmentHandleActivity.class);
+                intentFragmentHandler.putExtras(bundleFragmentHandler);
+                startActivity(intentFragmentHandler);
+                break;
+            case R.id.btn_webview:
+                Bundle bundleWebView = new Bundle();
+                bundleWebView.putString("TITLE","WebView");
+                Intent intentWebView =new Intent(MainActivity.this, WebViewActivity.class);
+                intentWebView.putExtras(bundleWebView);
+                startActivity(intentWebView);
                 break;
         }
     }

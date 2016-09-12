@@ -25,9 +25,14 @@ public class MApplication extends Application {
         mContext = this;
 
         //全局变量
-        commonPrefence = new CommonPrefence(mContext);
+        initGlobalVar();
 
         //其他配置
+    }
+
+    // 初始化全局变量
+    private void initGlobalVar(){
+        commonPrefence = new CommonPrefence(mContext);
     }
 
     public static CommonPrefence getCommonPrefence(){

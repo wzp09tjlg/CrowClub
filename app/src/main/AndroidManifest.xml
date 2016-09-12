@@ -3,7 +3,8 @@
     package="com.sina.crowclub">
 
     <uses-permission android:name="android.permission.VIBRATE"/>
-
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <application
         android:name=".MApplication"
         android:allowBackup="true"
@@ -34,14 +35,23 @@
             android:screenOrientation="portrait"/>
         <activity android:name=".view.activity.TestActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name=".view.activity.Test2Activity"
-            android:screenOrientation="portrait"/>
         <activity android:name=".view.activity.SelfListActivity"
             android:screenOrientation="portrait"/>
         <activity android:name=".view.activity.LoadDragActivity"
             android:screenOrientation="portrait"/>
         <activity android:name=".view.activity.AlbumDetailActivity"
             android:screenOrientation="portrait"/>
+        <activity android:name=".view.activity.CacheActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".view.activity.FragmentHandleActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".view.activity.NewsActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".view.activity.WebViewActivity"
+            android:screenOrientation="portrait"/>
+
+         <meta-data android:name="com.sina.crowclub.utils.CustomCachingGlideModule"
+             android:value="GlideModule"/>
     </application>
 
 </manifest>

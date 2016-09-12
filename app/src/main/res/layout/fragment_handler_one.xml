@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal">
+
+    <Button
+        android:id="@+id/btn_add_pic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/fragment_add_pic"
+        android:gravity="center"/>
+
+    <Button
+        android:id="@+id/btn_minus_pic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/fragment_minus_pic"
+        android:gravity="center" />
+
+    <ImageView
+        android:id="@+id/img_opt_pic"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/bg_war_curtain"/>
+</LinearLayout>

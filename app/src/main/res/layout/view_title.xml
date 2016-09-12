@@ -27,7 +27,8 @@
         android:paddingRight="@dimen/title_action_top_padding"
         android:paddingTop="@dimen/title_action_top_padding"
         android:scaleType="fitCenter"
-        android:src="@drawable/icon_menu_titlebar"/>
+        android:src="@drawable/icon_menu_titlebar"
+        android:visibility="invisible"/>
 
     <TextView
         android:id="@+id/title_center_text"
@@ -41,6 +42,6 @@
         android:gravity="center"
         android:singleLine="true"
         android:textColor="@color/color_title_text"
-        android:textSize="@dimen/title_textsize"/>
+        android:textSize="@dimen/title_textsize" />
 
 </RelativeLayout>

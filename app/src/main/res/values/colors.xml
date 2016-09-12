@@ -65,7 +65,13 @@
     <!-- 模式 的颜色值  -->
     <!--*****************************************************-->
     <color name="color_ffc300">#ffc300</color>
+    <color name="color_ff6666">#FF6666</color>
+    <color name="color_ff0000">#FF0000</color>
+    <color name="color_9f79ee">#9F79EE</color>
     <color name="color_999999">#999999</color>
+    <color name="color_9932cc">#9932CC</color>
+    <color name="color_37c000">#37C000</color>
+    <color name="color_30a070">#30A070</color>
     <color name="color_222222">#222222</color>
     <color name="color_1e1e1e">#1e1e1e</color>
 </resources>

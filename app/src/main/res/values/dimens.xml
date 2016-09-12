@@ -34,4 +34,8 @@
     <!-- RefreshLayout 为listview时 divider的高度 -->
     <dimen name="listview_divider_height">0.5dp</dimen>
 
+    <!-- 自定义的尺寸 -->
+    <dimen name="dimen_10">10dp</dimen>
+    <dimen name="dimen_60">60dp</dimen>
+
 </resources>

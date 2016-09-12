@@ -39,4 +39,18 @@
     <string name="album">连载</string>
     <!-- 连载详情页面-->
     <string name="album_detail">连载详情</string>
+    <!-- 碎片handler页面-->
+    <string name="fragment_handler">某块handler</string>
+    <string name="fragment_add_pic">添加图片</string>
+    <string name="fragment_minus_pic">删减图片</string>
+    <string name="fragment_add_data">增加数据</string>
+    <string name="fragment_minus_data">删减数据</string>
+    <string name="fragment_pre_page">前一页</string>
+    <string name="fragment_next_page">后一页</string>
+
+    <!-- webView -->
+    <string name="webview">WebView</string>
+    <!-- TestActivity的页面 -->
+    <string name="test_opt1">测试一</string>
+    <string name="test_opt2">测试二</string>
 </resources>
