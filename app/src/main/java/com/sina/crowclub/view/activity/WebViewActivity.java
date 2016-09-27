@@ -58,6 +58,14 @@ public class WebViewActivity extends BaseFragmentActivity implements
         initViews();
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        LogUtil.e("time 3:" + System.currentTimeMillis());
+        dismissProgress();
+        LogUtil.e("time 4:" + System.currentTimeMillis());
+    }
+
     private void getExtral(Intent intent){
         Bundle bundle = intent.getExtras();
 
@@ -178,12 +186,14 @@ public class WebViewActivity extends BaseFragmentActivity implements
         @Override
         public void onPageStarted(WebView view, String url, Bitmap favicon) {
             super.onPageStarted(view, url, favicon);
+            showProgress("just to test",false);
         }
 
         @Override
         public void onPageFinished(WebView view, String url) {
             super.onPageFinished(view, url);
             mSwipeRefreshLayout.setRefreshing(false);
+            dismissProgress();
         }
 
         @Override
@@ -196,16 +206,19 @@ public class WebViewActivity extends BaseFragmentActivity implements
         @Override
         public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error) {
             super.onReceivedError(view, request, error);
+            dismissProgress();
         }
 
         @Override
         public void onReceivedHttpError(WebView view, WebResourceRequest request, WebResourceResponse errorResponse) {
             super.onReceivedHttpError(view, request, errorResponse);
+            dismissProgress();
         }
 
         @Override
         public void onReceivedSslError(WebView view, SslErrorHandler handler, SslError error) {
             super.onReceivedSslError(view, handler, error);
+            dismissProgress();
         }
     }
 }

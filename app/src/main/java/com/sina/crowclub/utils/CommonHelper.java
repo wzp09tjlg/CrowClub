@@ -7,8 +7,14 @@ import android.view.Display;
 import android.view.View;
 import android.view.WindowManager;
 
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
+
+import org.json.JSONObject;
+
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * Created by wu on 2016/7/23.
@@ -74,5 +80,48 @@ public class CommonHelper {
             }
         }
         return map;
+    }
+
+    /** 获取json中的某个字段 */
+    public static String getJsonElement(String json,String elementName){
+        if(TextUtils.isEmpty(json) || TextUtils.isEmpty(elementName)) return "";
+        String tempJson = "";
+        try {
+            JSONObject jsonObject = new JSONObject(json);
+            tempJson = jsonObject.get(elementName).toString();
+        }catch (Exception e){}
+        return tempJson;
+    }
+
+    /** 获取json的key是数字的json转化为字符串数组 */
+    public static String getKeyNumJson(String json){
+        if(TextUtils.isEmpty(json)) return "";
+        JsonParser jsonParser = new JsonParser();
+        Set<Map.Entry<String,JsonElement>> entrySet = jsonParser.parse(json)
+                .getAsJsonObject().entrySet();
+        StringBuilder builder = new StringBuilder("[");
+        int tempLen = entrySet.size();
+        for(Map.Entry<String, JsonElement> entry : entrySet){
+            builder.append(entry.getValue().toString());
+            -- tempLen;
+            if(tempLen>0)
+            builder.append(",");
+        }
+        builder.append("]");
+        return builder.toString();
+    }
+
+    /** 获取json中key为数字的串的第一个bean */
+    public static String getKeyNumBeanJson(String json){
+        if(TextUtils.isEmpty(json)) return "";
+        JsonParser jsonParser = new JsonParser();
+        Set<Map.Entry<String,JsonElement>> entrySet = jsonParser.parse(json)
+                .getAsJsonObject().entrySet();
+        StringBuilder builder = new StringBuilder();
+        for(Map.Entry<String, JsonElement> entry : entrySet){
+            builder.append(entry.getValue().toString());
+            break;
+        }
+        return builder.toString();
     }
 }

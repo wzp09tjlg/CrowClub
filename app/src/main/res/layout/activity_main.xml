@@ -20,7 +20,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/btn_user_story"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:text="@string/user_message"/>
 
     <Button
@@ -28,7 +28,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/btn_user_message"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:text="@string/user_series"/>
 
     <Button
@@ -36,7 +36,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/btn_user_series"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:text="@string/star"/>
 
     <Button
@@ -44,7 +44,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/btn_star"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:text="@string/refreshRecycler"/>
 
     <Button
@@ -52,7 +52,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/btn_refresh_recycler"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:text="@string/album"/>
 
     <Button
@@ -60,7 +60,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/btn_album"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:text="@string/album_detail"/>
 
     <Button
@@ -76,6 +76,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/btn_fragment_handler"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:text="@string/webview"/>
+    <Button
+        android:id="@+id/btn_map_json"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_webview"
+        android:layout_marginTop="10dp"
+        android:text="@string/Json_mapJson"/>
 </RelativeLayout>

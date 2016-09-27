@@ -49,7 +49,8 @@
             android:screenOrientation="portrait"/>
         <activity android:name=".view.activity.WebViewActivity"
             android:screenOrientation="portrait"/>
-
+        <activity android:name=".view.activity.MapJsonActivity"
+            android:screenOrientation="portrait"/>
          <meta-data android:name="com.sina.crowclub.utils.CustomCachingGlideModule"
              android:value="GlideModule"/>
     </application>

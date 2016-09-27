@@ -1,14 +1,23 @@
 package com.sina.crowclub;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.PixelFormat;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.sina.crowclub.view.activity.CacheActivity;
 import com.sina.crowclub.view.activity.FragmentHandleActivity;
 import com.sina.crowclub.view.activity.LoadDragActivity;
+import com.sina.crowclub.view.activity.MapJsonActivity;
 import com.sina.crowclub.view.activity.MessageActivity;
 import com.sina.crowclub.view.activity.RefreshRecyclerActivity;
 import com.sina.crowclub.view.activity.StarActivity;
@@ -36,6 +45,7 @@ public class MainActivity extends BaseFragmentActivity implements
     private Button mBtnAlbumDetail;
     private Button mBtnFragmentHandler;
     private Button mBtnWebView;
+    private Button mBtnMapJson;
 
     /** data */
     private Context mContext;
@@ -59,6 +69,7 @@ public class MainActivity extends BaseFragmentActivity implements
         mBtnAlbumDetail = $(R.id.btn_album_detail);
         mBtnFragmentHandler = $(R.id.btn_fragment_handler);
         mBtnWebView = $(R.id.btn_webview);
+        mBtnMapJson = $(R.id.btn_map_json);
         initData();
     }
 
@@ -74,6 +85,10 @@ public class MainActivity extends BaseFragmentActivity implements
         mBtnAlbumDetail.setOnClickListener(this);
         mBtnFragmentHandler.setOnClickListener(this);
         mBtnWebView.setOnClickListener(this);
+        mBtnMapJson.setOnClickListener(this);
+
+        //showDialog();
+        //doAddSomeViewToWindow();
     }
 
     @Override
@@ -138,6 +153,49 @@ public class MainActivity extends BaseFragmentActivity implements
                 intentWebView.putExtras(bundleWebView);
                 startActivity(intentWebView);
                 break;
+            case R.id.btn_map_json:
+                Bundle bundleMapJson = new Bundle();
+                bundleMapJson.putString("TITLE","WebView");
+                Intent intentMapJson =new Intent(MainActivity.this, MapJsonActivity.class);
+                intentMapJson.putExtras(bundleMapJson);
+                startActivity(intentMapJson);
+                break;
         }
+    }
+
+    private void doAddSomeViewToWindow(){
+        WindowManager.LayoutParams windowParams = new WindowManager.LayoutParams();// 获取WINDOW界面的
+        //Gravity.TOP|Gravity.LEFT;这个必须加
+        windowParams.gravity = Gravity.CENTER;//Gravity.TOP | Gravity.LEFT;
+        //得到preview左上角相对于屏幕的坐标
+        //windowParams.x = 300;
+        //windowParams.y = 300;
+        //设置拖拽item的宽和高
+        windowParams.width = (int) (300);// 放大dragScale倍，可以设置拖动后的倍数
+        windowParams.height = (int) (300);// 放大dragScale倍，可以设置拖动后的倍数
+        windowParams.flags = WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE
+                | WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE
+                | WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON
+                | WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN;
+        windowParams.format = PixelFormat.TRANSLUCENT;//透明的处理
+        windowParams.windowAnimations = 0;
+        ImageView iv = new ImageView(this);
+        iv.setScaleType(ImageView.ScaleType.CENTER_CROP);
+        iv.setBackgroundDrawable(getResources().getDrawable(R.drawable.icon_nice_girl_eat));
+        WindowManager windowManager = (WindowManager)getSystemService(Context.WINDOW_SERVICE);// "window"
+        windowManager.addView(iv, windowParams);
+    }
+
+    protected void showDialog(){
+        Dialog dialog = new Dialog(mContext);
+        ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT
+                , ViewGroup.LayoutParams.MATCH_PARENT);
+        LinearLayout layout = new LinearLayout(mContext);
+        TextView text = new TextView(mContext);
+        ViewGroup.LayoutParams layoutParams1 = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT
+                , ViewGroup.LayoutParams.WRAP_CONTENT);
+        layout.addView(text,layoutParams1);
+        dialog.addContentView(layout,layoutParams);
+        dialog.show();
     }
 }
