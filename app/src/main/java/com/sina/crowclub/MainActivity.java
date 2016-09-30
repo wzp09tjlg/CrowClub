@@ -22,6 +22,7 @@ import com.sina.crowclub.view.activity.MessageActivity;
 import com.sina.crowclub.view.activity.RefreshRecyclerActivity;
 import com.sina.crowclub.view.activity.StarActivity;
 import com.sina.crowclub.view.activity.TestActivity;
+import com.sina.crowclub.view.activity.UserActivity;
 import com.sina.crowclub.view.activity.UserSeriesActivity;
 import com.sina.crowclub.view.activity.WebViewActivity;
 import com.sina.crowclub.view.base.BaseFragmentActivity;
@@ -46,6 +47,7 @@ public class MainActivity extends BaseFragmentActivity implements
     private Button mBtnFragmentHandler;
     private Button mBtnWebView;
     private Button mBtnMapJson;
+    private Button mBtnUser;
 
     /** data */
     private Context mContext;
@@ -70,6 +72,7 @@ public class MainActivity extends BaseFragmentActivity implements
         mBtnFragmentHandler = $(R.id.btn_fragment_handler);
         mBtnWebView = $(R.id.btn_webview);
         mBtnMapJson = $(R.id.btn_map_json);
+        mBtnUser = $(R.id.btn_user);
         initData();
     }
 
@@ -86,7 +89,7 @@ public class MainActivity extends BaseFragmentActivity implements
         mBtnFragmentHandler.setOnClickListener(this);
         mBtnWebView.setOnClickListener(this);
         mBtnMapJson.setOnClickListener(this);
-
+        mBtnUser.setOnClickListener(this);
         //showDialog();
         //doAddSomeViewToWindow();
     }
@@ -159,6 +162,13 @@ public class MainActivity extends BaseFragmentActivity implements
                 Intent intentMapJson =new Intent(MainActivity.this, MapJsonActivity.class);
                 intentMapJson.putExtras(bundleMapJson);
                 startActivity(intentMapJson);
+                break;
+            case R.id.btn_user:
+                Bundle bundleUser = new Bundle();
+                bundleUser.putString("TITLE","USER");
+                Intent intentUser = new Intent(MainActivity.this, UserActivity.class);
+                intentUser.putExtras(bundleUser);
+                startActivity(intentUser);
                 break;
         }
     }

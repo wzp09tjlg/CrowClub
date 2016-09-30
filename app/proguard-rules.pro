@@ -15,4 +15,19 @@
 #-keepclassmembers class fqcn.of.javascript.interface.for.webview {
 #   public *;
 #}
+#glide图片处理的混淆
 -keepnames class * com.sina.crowclub.utils.CustomCachingGlideModule
+
+# 阿里百川反馈页面混淆
+-keep class com.alibaba.sdk.android.feedback.impl.FeedbackServiceImpl {*;}
+-keep class com.alibaba.sdk.android.feedback.impl.FeedbackAPI {*;}
+-keep class com.alibaba.sdk.android.feedback.util.IWxCallback {*;}
+-keep class com.alibaba.sdk.android.feedback.util.IUnreadCountCallback{*;}
+-keep class com.alibaba.sdk.android.feedback.FeedbackService{*;}
+-keep public class com.alibaba.mtl.log.model.LogField {public *;}
+-keep class com.taobao.securityjni.**{*;}
+-keep class com.taobao.wireless.security.**{*;}
+-keep class com.ut.secbody.**{*;}
+-keep class com.taobao.dp.**{*;}
+-keep class com.alibaba.wireless.security.**{*;}
+-keep class com.ta.utdid2.device.**{*;}

@@ -57,4 +57,10 @@
     <string name="Json_mapJson">MapJson</string>
     <string name="Json_toJson">toJson</string>
     <string name="Json_fromJson">fromJson</string>
+    <!-- 用户页面 -->
+    <string name="User">用户</string>
+    <!-- 反馈页面 -->
+    <string name="Feedback_QA">我的反馈</string>
+    <string name="Feedback_unRead_msg_Count">未读消息数</string>
+    <string name="Feedback_activity">反馈页面</string>
 </resources>

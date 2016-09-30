@@ -56,9 +56,4 @@ public class SQLHelper extends SQLiteOpenHelper {
         // TODO 更改数据库版本的操作
         onCreate(db);
     }
-
-    public static enum TABLES{
-        TABLE_CHANNEL ,
-        TABLE_NEW
-    }
 }

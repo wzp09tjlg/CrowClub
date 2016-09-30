@@ -5,9 +5,10 @@
     <uses-permission android:name="android.permission.VIBRATE"/>
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
     <application
         android:name=".MApplication"
-        android:allowBackup="true"
+        android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
@@ -51,7 +52,15 @@
             android:screenOrientation="portrait"/>
         <activity android:name=".view.activity.MapJsonActivity"
             android:screenOrientation="portrait"/>
-         <meta-data android:name="com.sina.crowclub.utils.CustomCachingGlideModule"
+        <activity android:name=".view.activity.UserActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".view.activity.FeedbackActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".view.activity.QAActivity"
+            android:screenOrientation="portrait"/>
+
+        <!-- 处理的是glide图片处理 -->
+        <meta-data android:name="com.sina.crowclub.utils.CustomCachingGlideModule"
              android:value="GlideModule"/>
     </application>
 
