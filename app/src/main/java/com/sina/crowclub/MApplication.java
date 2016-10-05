@@ -6,7 +6,9 @@ import android.content.Context;
 import com.alibaba.sdk.android.feedback.impl.FeedbackAPI;
 import com.sina.crowclub.utils.CommonPrefence;
 import com.sina.crowclub.utils.FinalUtil;
+import com.sina.crowclub.utils.ThreadPool;
 import com.sina.crowclub.view.base.BaseFragmentActivity;
+import com.sina.crowclub.view.widget.GlobalToast.GloableToast;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -38,7 +40,9 @@ public class MApplication extends Application {
     private void initGlobalVar(){
         commonPrefence = new CommonPrefence(mContext);   //初始化sharepre
         FeedbackAPI.init(this, FinalUtil.ALIBC_APP_KEY); //初始化阿里百川
+        GloableToast.getInsance(mContext);
 
+        ThreadPool.init();                               //线程池的初始化
     }
 
     public static CommonPrefence getCommonPrefence(){

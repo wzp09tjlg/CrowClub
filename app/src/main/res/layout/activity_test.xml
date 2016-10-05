@@ -20,8 +20,23 @@
         android:gravity="center"
         android:textSize="16sp"/>
 
-    <com.sina.crowclub.view.widget.DragList.DragListView
-        android:id="@+id/list"
+    <Button
+        android:id="@+id/btn_test3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/test_opt3"
+        android:gravity="center"
+        android:textSize="16sp" />
+
+    <ImageView
+        android:id="@+id/img_icon"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:scaleType="center"/>
+
+    <com.sina.crowclub.view.widget.RoundEditImageView
+        android:id="@+id/rimg_edit"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:src="@drawable/icon_nice_girl_eat"/>
 </LinearLayout>

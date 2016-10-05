@@ -3,25 +3,24 @@ package com.sina.crowclub.view.activity;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import com.sina.crowclub.R;
-import com.sina.crowclub.network.Parse.StoryBean;
 import com.sina.crowclub.utils.CommonHelper;
 import com.sina.crowclub.utils.CommonPrefence;
 import com.sina.crowclub.utils.LogUtil;
 import com.sina.crowclub.view.adapter.AlbumAdapter;
 import com.sina.crowclub.view.base.BaseFragmentActivity;
-import com.sina.crowclub.view.widget.DragList.DragListView;
+import com.sina.crowclub.view.widget.GlobalToast.GloableToast;
+import com.sina.crowclub.view.widget.RoundEditImageView;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -43,12 +42,15 @@ public class TestActivity extends BaseFragmentActivity implements
     /** View */
     private Button btnTest1;
     private Button btnTest2;
-    private DragListView listView;
+    private Button btnTest3;
+    private ImageView imgIcon;
+
+    private RoundEditImageView roundEditImageView;
+
     /** Data */
     private Context mContext;
     private AlbumAdapter albumAdapter;
 
-    private List<StoryBean> mData;
     /**********************************************/
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -58,9 +60,11 @@ public class TestActivity extends BaseFragmentActivity implements
     }
 
     private void initViews(){
-        listView = $(R.id.list);
         btnTest1 = $(R.id.btn_test1);
         btnTest2 = $(R.id.btn_test2);
+        btnTest3 = $(R.id.btn_test3);
+        imgIcon = $(R.id.img_icon);
+        roundEditImageView = $(R.id.rimg_edit);
 
         initData();
     }
@@ -68,31 +72,9 @@ public class TestActivity extends BaseFragmentActivity implements
 
     private void initData(){
         mContext = this;
-        String tempName = "thisisianameandhasernothinngmeafulofthisworldbutjusttotestandtesttest";
 
-        mData = new ArrayList<>();
-        for(int i=0;i<50;i++){
-            StoryBean bean = new StoryBean();
-            bean.id = i;
-            bean.name = tempName.substring(new Random().nextInt(5) + 1
-                    ,new Random().nextInt(50) + 6 );
-
-            if(TextUtils.isEmpty(bean.name))
-                bean.albumName = "StoryName";
-
-            bean.create_time = new Random().nextInt(1000);
-            if(i % 3 == 0) {
-                bean.albumId = new Random().nextInt(5);
-                bean.albumName = tempName.substring(new Random().nextInt(5) + 1
-                        ,new Random().nextInt(50) + 6);
-                if(TextUtils.isEmpty(bean.albumName))
-                    bean.albumName = "this is my Album";
-            }
-            mData.add(bean);
-        }
-
-        albumAdapter = new AlbumAdapter(mContext,mData);
-        listView.setAdapter(albumAdapter);
+        Bitmap bitmap = BitmapFactory.decodeResource(getResources(),R.drawable.icon_nice_girl_eat);
+        roundEditImageView.setImageBitmap(bitmap);
 
         initListener();
     }
@@ -100,6 +82,7 @@ public class TestActivity extends BaseFragmentActivity implements
     private void initListener(){
         btnTest1.setOnClickListener(this);
         btnTest2.setOnClickListener(this);
+        btnTest3.setOnClickListener(this);
     }
 
     @Override
@@ -138,6 +121,11 @@ public class TestActivity extends BaseFragmentActivity implements
                 }
                 // 获取本地保存文件
                 doSomeTestGetFile();
+                break;
+            case R.id.btn_test3:
+
+                GloableToast.show("dshajfhdsjahfslahf");
+                getEditOvalIcon();
                 break;
         }
     }
@@ -188,5 +176,10 @@ public class TestActivity extends BaseFragmentActivity implements
         int age = CommonPrefence.get(TAG_AGE,0);
         LogUtil.e("get success");
         LogUtil.e("name:" + name + "  type:" + type + "  age:" + age);
+    }
+
+    private void getEditOvalIcon(){
+        Bitmap bitmap = roundEditImageView.extractBitmap(300);
+        imgIcon.setImageBitmap(bitmap);
     }
 }

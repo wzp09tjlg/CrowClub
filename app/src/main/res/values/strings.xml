@@ -53,6 +53,7 @@
     <!-- TestActivity的页面 -->
     <string name="test_opt1">测试一</string>
     <string name="test_opt2">测试二</string>
+    <string name="test_opt3">测试三</string>
     <!-- MapJsonActivity 的页面 -->
     <string name="Json_mapJson">MapJson</string>
     <string name="Json_toJson">toJson</string>
