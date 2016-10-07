@@ -182,4 +182,9 @@ public class TestActivity extends BaseFragmentActivity implements
         Bitmap bitmap = roundEditImageView.extractBitmap(300);
         imgIcon.setImageBitmap(bitmap);
     }
+
+    private void doSomeClassLoader(){
+        ClassLoader classLoader = getClassLoader();
+        LogUtil.i("classLoader name:" + classLoader.toString() + "  parent name:"  + classLoader.getParent());
+    }
 }
