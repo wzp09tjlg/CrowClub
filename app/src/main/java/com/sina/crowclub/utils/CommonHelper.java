@@ -1,7 +1,15 @@
 package com.sina.crowclub.utils;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.graphics.Point;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffXfermode;
+import android.graphics.Rect;
+import android.graphics.RectF;
 import android.text.TextUtils;
 import android.view.Display;
 import android.view.View;
@@ -123,5 +131,23 @@ public class CommonHelper {
             break;
         }
         return builder.toString();
+    }
+
+    /** 创建带圆角的bitmap */
+    public static Bitmap getRoundCornerBitmap(Bitmap bitmap, float corner) {
+        int width=bitmap.getWidth();
+        int height=bitmap.getHeight();
+        Bitmap roundCornerBitmap = Bitmap.createBitmap(width,height,Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(roundCornerBitmap);
+        Paint paint = new Paint();
+        paint.setColor(Color.BLACK);
+        paint.setAntiAlias(true);
+        Rect rect = new Rect(0, 0, width, height);
+        RectF rectF = new RectF(rect);
+        canvas.drawRoundRect(rectF, corner, corner, paint);
+        PorterDuffXfermode xfermode=new PorterDuffXfermode(PorterDuff.Mode.SRC_IN);
+        paint.setXfermode(xfermode);
+        canvas.drawBitmap(bitmap, rect, rect, paint);
+        return roundCornerBitmap;
     }
 }

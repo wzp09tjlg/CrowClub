@@ -3,6 +3,7 @@ package com.sina.crowclub.view.widget.GlobalToast;
 import android.content.Context;
 import android.graphics.Color;
 import android.view.Gravity;
+import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -34,10 +35,14 @@ public class GloableToast {
         LinearLayout mLayout=new LinearLayout(mContext);
         mLayout.setOrientation(LinearLayout.HORIZONTAL);
 
+        ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT
+                , ViewGroup.LayoutParams.WRAP_CONTENT);
         TextView tv = new TextView(mContext);
         tv.setText(msg);
-        tv.setTextColor(Color.rgb(121, 121, 121));
+        tv.setTextColor(Color.rgb(0, 0, 0));
         tv.setGravity(Gravity.CENTER);
+        mLayout.addView(tv,params);
+
         baseToast.setView(mLayout);
         baseToast.setDuration(duration);
         baseToast.show();

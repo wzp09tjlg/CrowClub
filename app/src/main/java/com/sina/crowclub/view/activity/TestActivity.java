@@ -17,7 +17,6 @@ import com.sina.crowclub.utils.CommonPrefence;
 import com.sina.crowclub.utils.LogUtil;
 import com.sina.crowclub.view.adapter.AlbumAdapter;
 import com.sina.crowclub.view.base.BaseFragmentActivity;
-import com.sina.crowclub.view.widget.GlobalToast.GloableToast;
 import com.sina.crowclub.view.widget.RoundEditImageView;
 
 import java.io.IOException;
@@ -123,9 +122,13 @@ public class TestActivity extends BaseFragmentActivity implements
                 doSomeTestGetFile();
                 break;
             case R.id.btn_test3:
-
-                GloableToast.show("dshajfhdsjahfslahf");
-                getEditOvalIcon();
+                //显示自定义的toast
+                //GloableToast.show("dshajfhdsjahfslahf");
+                //显示编辑之后的圆图
+                getEditOvalIcon(200);//设置图像的大小是200
+                //针对bitmap做圆角处理
+                //Bitmap bitmap = BitmapFactory.decodeResource(getResources(),R.drawable.icon_nice_girl_eat);
+                //getRoundCornerBitmap(bitmap,30f);
                 break;
         }
     }
@@ -178,13 +181,22 @@ public class TestActivity extends BaseFragmentActivity implements
         LogUtil.e("name:" + name + "  type:" + type + "  age:" + age);
     }
 
-    private void getEditOvalIcon(){
-        Bitmap bitmap = roundEditImageView.extractBitmap(300);
+    private void getEditOvalIcon(int size){
+        Bitmap bitmap = roundEditImageView.extractBitmap(size);//参数的意思绘制图片的长宽大小
         imgIcon.setImageBitmap(bitmap);
     }
 
     private void doSomeClassLoader(){
         ClassLoader classLoader = getClassLoader();
         LogUtil.i("classLoader name:" + classLoader.toString() + "  parent name:"  + classLoader.getParent());
+    }
+
+    private void doViewLearn(){
+        View view = new View(mContext);
+    }
+
+    private void getRoundCornerBitmap(Bitmap bitmap,float corner){
+       Bitmap tempBitmap = CommonHelper.getRoundCornerBitmap(bitmap,corner);
+       imgIcon.setImageBitmap(tempBitmap);
     }
 }
