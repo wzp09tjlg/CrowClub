@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import com.sina.crowclub.view.activity.CacheActivity;
 import com.sina.crowclub.view.activity.FragmentHandleActivity;
+import com.sina.crowclub.view.activity.LoadActivity;
 import com.sina.crowclub.view.activity.LoadDragActivity;
 import com.sina.crowclub.view.activity.MapJsonActivity;
 import com.sina.crowclub.view.activity.MessageActivity;
@@ -48,6 +49,7 @@ public class MainActivity extends BaseFragmentActivity implements
     private Button mBtnWebView;
     private Button mBtnMapJson;
     private Button mBtnUser;
+    private Button mBtnLoad;
 
     /** data */
     private Context mContext;
@@ -73,6 +75,7 @@ public class MainActivity extends BaseFragmentActivity implements
         mBtnWebView = $(R.id.btn_webview);
         mBtnMapJson = $(R.id.btn_map_json);
         mBtnUser = $(R.id.btn_user);
+        mBtnLoad = $(R.id.btn_load);
         initData();
     }
 
@@ -90,6 +93,7 @@ public class MainActivity extends BaseFragmentActivity implements
         mBtnWebView.setOnClickListener(this);
         mBtnMapJson.setOnClickListener(this);
         mBtnUser.setOnClickListener(this);
+        mBtnLoad.setOnClickListener(this);
         //showDialog();
         //doAddSomeViewToWindow();
     }
@@ -169,6 +173,13 @@ public class MainActivity extends BaseFragmentActivity implements
                 Intent intentUser = new Intent(MainActivity.this, UserActivity.class);
                 intentUser.putExtras(bundleUser);
                 startActivity(intentUser);
+                break;
+            case R.id.btn_load:
+                Bundle bundleLoad = new Bundle();
+                bundleLoad.putString("TITLE","load");
+                Intent intentLoad = new Intent(MainActivity.this,LoadActivity.class);
+                intentLoad.putExtras(bundleLoad);
+                startActivity(intentLoad);
                 break;
         }
     }

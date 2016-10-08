@@ -64,4 +64,6 @@
     <string name="Feedback_QA">我的反馈</string>
     <string name="Feedback_unRead_msg_Count">未读消息数</string>
     <string name="Feedback_activity">反馈页面</string>
+    <!-- Load页面 -->
+    <string name="Load">加载</string>
 </resources>
