@@ -1,9 +1,10 @@
 package com.sina.crowclub.database;
 
 import android.content.Context;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+
+import com.sina.crowclub.utils.LogUtil;
 
 /**
  * Created by wu on 2016/10/8.
@@ -17,39 +18,47 @@ public class CommonDB extends SQLiteOpenHelper {
 
     /** FinalData */
     private static final String  DB_NAME = "CommonDB.db";//创建数据库的名字
-    private static final int  VERSION = 1;
+    public static int  VERSION = 3;
 
+    public static final String TABLE_NEW = "channel_news";
+    public static final String TABLE_VIDEO = "channel_video";
 
+    private final String CREATE_TABLE_NEW = "create table if not exists " + TABLE_NEW +
+            "(_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+            " id INTEGER, " +
+            " name TEXT, " +
+            " orderId INTEGER, " +
+            " selected INTEGER)";
+
+    private final String CREATE_TABLE_VIDEO = "create table if not exists " + TABLE_VIDEO +
+            "(_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+            " id INTEGER, " +
+            " name TEXT, " +
+            " orderId INTEGER, " +
+            " selected INTEGER)";
     /**************************************/
     public CommonDB(Context context){
         super(context, DB_NAME, null, VERSION);
         this.mContext = context;
+        LogUtil.i("CommonDB construct");
     }
 
     @Override
-    public void onCreate(SQLiteDatabase db) {
-
+    public void onCreate(SQLiteDatabase db) {//第一次获取数据对象实例的时候执行onCreate方法
+        LogUtil.i("CommonDB onCreate");
+        db.execSQL(CREATE_TABLE_NEW);
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
-    }
-
-    //查看表是否在数据库中存在
-    protected boolean isTableExist(String tableName){
-        String sql = "SELECT count(*) FROM sqlite_master " +
-                "WHERE type='table' AND name='" + tableName + "'";
-        Cursor cur = getReadableDatabase().rawQuery(sql, null);
-        int count = -1;
-        while (cur.moveToNext()) {
-            count = cur.getInt(0);
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {//在数据库升级过程中，第一次获取数据库实例的时候执行onUpdate方法
+        LogUtil.i("CommonDB onUpdate");
+        switch (oldVersion){
+            case 1: //在升级高版本的时候，由低版本数据库号1到高版本数据库号N时 执行操作
+                db.execSQL(CREATE_TABLE_VIDEO);
+                break;
+            case 2:
+                LogUtil.i("CommonDB onUpdate");
+                break;
         }
-        if (count <= 0) {
-            // 表不存在
-        } else {
-
-        }
-        return false;
     }
 }

@@ -15,6 +15,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.sina.crowclub.view.activity.CacheActivity;
+import com.sina.crowclub.view.activity.DBActivity;
 import com.sina.crowclub.view.activity.FragmentHandleActivity;
 import com.sina.crowclub.view.activity.LoadActivity;
 import com.sina.crowclub.view.activity.LoadDragActivity;
@@ -50,6 +51,7 @@ public class MainActivity extends BaseFragmentActivity implements
     private Button mBtnMapJson;
     private Button mBtnUser;
     private Button mBtnLoad;
+    private Button mBtnDB;
 
     /** data */
     private Context mContext;
@@ -76,6 +78,7 @@ public class MainActivity extends BaseFragmentActivity implements
         mBtnMapJson = $(R.id.btn_map_json);
         mBtnUser = $(R.id.btn_user);
         mBtnLoad = $(R.id.btn_load);
+        mBtnDB = $(R.id.btn_db);
         initData();
     }
 
@@ -94,6 +97,7 @@ public class MainActivity extends BaseFragmentActivity implements
         mBtnMapJson.setOnClickListener(this);
         mBtnUser.setOnClickListener(this);
         mBtnLoad.setOnClickListener(this);
+        mBtnDB.setOnClickListener(this);
         //showDialog();
         //doAddSomeViewToWindow();
     }
@@ -180,6 +184,13 @@ public class MainActivity extends BaseFragmentActivity implements
                 Intent intentLoad = new Intent(MainActivity.this,LoadActivity.class);
                 intentLoad.putExtras(bundleLoad);
                 startActivity(intentLoad);
+                break;
+            case R.id.btn_db:
+                Bundle bundleDB = new Bundle();
+                bundleDB.putString("TITLE","DB");
+                Intent intentDB = new Intent(MainActivity.this, DBActivity.class);
+                intentDB.putExtras(bundleDB);
+                startActivity(intentDB);
                 break;
         }
     }

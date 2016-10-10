@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.Context;
 
 import com.alibaba.sdk.android.feedback.impl.FeedbackAPI;
+import com.sina.crowclub.database.CommonDao;
 import com.sina.crowclub.utils.CommonPrefence;
 import com.sina.crowclub.utils.FinalUtil;
 import com.sina.crowclub.utils.ThreadPool;
@@ -23,6 +24,7 @@ public class MApplication extends Application {
     public static Context mContext;
     private Stack<BaseFragmentActivity> activities;
     private static CommonPrefence commonPrefence;
+    public static CommonDao mCommonDao;
 
     /*************************************************/
     @Override
@@ -40,9 +42,16 @@ public class MApplication extends Application {
     private void initGlobalVar(){
         commonPrefence = new CommonPrefence(mContext);   //初始化sharepre
         FeedbackAPI.init(this, FinalUtil.ALIBC_APP_KEY); //初始化阿里百川
-        GloableToast.getInsance(mContext);
+        GloableToast.getInsance(mContext);               //可以控制显示时间的toast
+        mCommonDao = new CommonDao(mContext);            //数据库的公共类
 
         ThreadPool.init();                               //线程池的初始化
+    }
+
+    // 销毁全局变量
+    private void destoryGoableVar(){//在主页销毁时 销毁全局变量?是否合适 和必要?
+        mCommonDao.closeDb();       //关闭数据库
+        ThreadPool.shutdown();      //关闭线程池
     }
 
     public static CommonPrefence getCommonPrefence(){

@@ -66,4 +66,12 @@
     <string name="Feedback_activity">反馈页面</string>
     <!-- Load页面 -->
     <string name="Load">加载</string>
+    <!-- 数据库页面 -->
+    <string name="DB">数据库</string>
+    <string name="createDB">创建数据库</string>
+    <string name="getReadDB">可读数据库</string>
+    <string name="getWriteDB">可写数据库</string>
+    <string name="updateDB">更新数据库</string>
+    <string name="updatedGetDB">更新数据库之后获取数据库</string>
+    <string name="testMethodDB">测试数据库中的各个方法</string>
 </resources>

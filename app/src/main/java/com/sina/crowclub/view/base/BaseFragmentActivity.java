@@ -16,6 +16,11 @@ import com.sina.crowclub.view.widget.CommonDialog;
 
 /**
  * Created by wu on 2016/7/15.
+ * 在创建Activity时注意一下几点
+ * 1.判断是否activity的启动模式,是否需要重写 newIntent()方法
+ * 2.在activity中进行的网络访问,尽量在activity销毁的时候取消网络请求
+ * 3.在启动activity的时候尽量将activity生命周期的方法放置在一块，便于查找和管理。在生命周期中的方法中尽量减少耗时的操作(网络请求一般做延迟发送)
+ * 4.如果在activity中存在fragment,判断是否需要将OnActivityResult方法传递到fragment中
  */
 public abstract class BaseFragmentActivity extends FragmentActivity {
     private final String TAG = BaseFragmentActivity.class.getSimpleName();

@@ -106,5 +106,13 @@
         android:layout_marginTop="10dp"
         android:text="@string/Load"/>
 
+    <Button
+        android:id="@+id/btn_db"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_load"
+        android:layout_marginTop="10dp"
+        android:text="@string/DB"/>
+
 </LinearLayout>
 </ScrollView>
