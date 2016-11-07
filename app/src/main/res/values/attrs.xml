@@ -26,4 +26,10 @@
         <attr name="rightViewId" format="reference" />
         <attr name="contentViewId" format="reference" />
     </declare-styleable>
+
+    <!-- 显示更多的自定义View -->
+    <declare-styleable name="ShowMoreView">
+        <attr name="defaultLines" format="integer"/>
+        <attr name="showType" format="integer"/>
+    </declare-styleable>
 </resources>

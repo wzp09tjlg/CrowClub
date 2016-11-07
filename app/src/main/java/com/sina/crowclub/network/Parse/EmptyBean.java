@@ -8,4 +8,9 @@ import java.io.Serializable;
 public class EmptyBean implements Serializable {
     public int     res_code;
     public String  res_msg;
+
+    @Override
+    public String toString() {
+        return "{res_code:" + res_code + ";res_msg:" + res_msg + "}";
+    }
 }

@@ -108,7 +108,9 @@ public class MainActivity extends BaseFragmentActivity implements
         switch (v.getId()){
             case R.id.btn_user_story:
                 bundle.putString("TITLE",getResources().getString(R.string.user_story));
-                Intent intentUserStory = new Intent(MainActivity.this, TestActivity.class);//
+                Intent intentUserStory = new Intent(MainActivity.this,
+                //        PageActivity.class);
+                        TestActivity.class);//
                 // UserStoryActivity.class);
                 intentUserStory.putExtras(bundle);
                 startActivity(intentUserStory);

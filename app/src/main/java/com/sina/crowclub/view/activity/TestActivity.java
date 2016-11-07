@@ -12,12 +12,14 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import com.sina.crowclub.R;
+import com.sina.crowclub.network.Parse.EmptyBean;
 import com.sina.crowclub.utils.CommonHelper;
 import com.sina.crowclub.utils.CommonPrefence;
 import com.sina.crowclub.utils.LogUtil;
 import com.sina.crowclub.view.adapter.AlbumAdapter;
 import com.sina.crowclub.view.base.BaseFragmentActivity;
 import com.sina.crowclub.view.widget.RoundEditImageView;
+import com.sina.crowclub.view.widget.ShowMoreView;
 
 import java.io.IOException;
 
@@ -42,9 +44,12 @@ public class TestActivity extends BaseFragmentActivity implements
     private Button btnTest1;
     private Button btnTest2;
     private Button btnTest3;
+    private Button btnTest4;
     private ImageView imgIcon;
 
     private RoundEditImageView roundEditImageView;
+
+    private ShowMoreView showMoreView;
 
     /** Data */
     private Context mContext;
@@ -62,7 +67,9 @@ public class TestActivity extends BaseFragmentActivity implements
         btnTest1 = $(R.id.btn_test1);
         btnTest2 = $(R.id.btn_test2);
         btnTest3 = $(R.id.btn_test3);
+        btnTest4 = $(R.id.btn_test4);
         imgIcon = $(R.id.img_icon);
+        showMoreView = $(R.id.view_showMore);
         roundEditImageView = $(R.id.rimg_edit);
 
         initData();
@@ -82,6 +89,7 @@ public class TestActivity extends BaseFragmentActivity implements
         btnTest1.setOnClickListener(this);
         btnTest2.setOnClickListener(this);
         btnTest3.setOnClickListener(this);
+        btnTest4.setOnClickListener(this);
     }
 
     @Override
@@ -129,6 +137,10 @@ public class TestActivity extends BaseFragmentActivity implements
                 //针对bitmap做圆角处理
                 //Bitmap bitmap = BitmapFactory.decodeResource(getResources(),R.drawable.icon_nice_girl_eat);
                 //getRoundCornerBitmap(bitmap,30f);
+                break;
+            case R.id.btn_test4:
+                //doGetBeanFromReflect();
+                doSomeTestForShowMore();
                 break;
         }
     }
@@ -199,4 +211,56 @@ public class TestActivity extends BaseFragmentActivity implements
        Bitmap tempBitmap = CommonHelper.getRoundCornerBitmap(bitmap,corner);
        imgIcon.setImageBitmap(tempBitmap);
     }
+
+    //通过反射获取类对象
+    private void doGetBeanFromReflect(){
+        String name = "com.sina.crowclub.network.Parse.EmptyBean";
+        EmptyBean bean = null;
+/*        try{ //第一种方式
+            bean =  (EmptyBean) Class.forName(name).newInstance();
+            if(bean != null){
+                bean.res_code = 200;
+                bean.res_msg = "this is all right";
+            }
+
+        }catch (Exception e){}*/
+
+        try{//第二种方式 (java中定义的类只能是public的不可能是private 或者protected,当前在一个类当中的类是不算的)
+            Class<?> cls=Class.forName(name);
+            bean= (EmptyBean) cls.newInstance();
+            if(bean != null){
+                bean.res_code = 200;
+                bean.res_msg = "this is all right";
+            }
+        }catch (Exception e){}
+
+        if(bean == null){
+            LogUtil.e("abcd","get bean from reflect error");
+        }else{
+            LogUtil.e("abcd","get bean from reflect right  bean:" + bean);
+        }
+    }
+
+    private void doSomeTestForShowMore(){
+        showMoreView.setContent(tempSting);
+    }
+
+    private String tempSting = "  下面这个函数是在上面函数的基础上，" +
+            "在不绘制UI的前提下，计算一段文本显示的高度，" +
+            "获得它高度的主要目的是为了站位，方便异步的显示这些文字。" +
+            "下面的代码在逻辑上做了相应的具体业务的处理，" +
+            "如果文字没有超出最大行数，那么就返回这段文字实际高度，" +
+            "如果超过了最大行数，那么就只返回最大行数之内的文本的高度" +
+            "  下面这个函数是在上面函数的基础上，" +
+            "在不绘制UI的前提下，计算一段文本显示的高度，" +
+            "获得它高度的主要目的是为了站位，方便异步的显示这些文字。" +
+            "下面的代码在逻辑上做了相应的具体业务的处理，" +
+            "如果文字没有超出最大行数，那么就返回这段文字实际高度，" +
+            "如果超过了最大行数，那么就只返回最大行数之内的文本的高度" +
+            "  下面这个函数是在上面函数的基础上，" +
+            "在不绘制UI的前提下，计算一段文本显示的高度，" +
+            "获得它高度的主要目的是为了站位，方便异步的显示这些文字。" +
+            "下面的代码在逻辑上做了相应的具体业务的处理，" +
+            "如果文字没有超出最大行数，那么就返回这段文字实际高度，" +
+            "如果超过了最大行数，那么就只返回最大行数之内的文本的高度";
 }
