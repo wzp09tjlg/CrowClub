@@ -17,13 +17,13 @@ import android.widget.TextView;
 import com.sina.crowclub.view.activity.CacheActivity;
 import com.sina.crowclub.view.activity.DBActivity;
 import com.sina.crowclub.view.activity.FragmentHandleActivity;
+import com.sina.crowclub.view.activity.GuideActivity;
 import com.sina.crowclub.view.activity.LoadActivity;
 import com.sina.crowclub.view.activity.LoadDragActivity;
 import com.sina.crowclub.view.activity.MapJsonActivity;
 import com.sina.crowclub.view.activity.MessageActivity;
 import com.sina.crowclub.view.activity.RefreshRecyclerActivity;
 import com.sina.crowclub.view.activity.StarActivity;
-import com.sina.crowclub.view.activity.TestActivity;
 import com.sina.crowclub.view.activity.UserActivity;
 import com.sina.crowclub.view.activity.UserSeriesActivity;
 import com.sina.crowclub.view.activity.WebViewActivity;
@@ -110,8 +110,10 @@ public class MainActivity extends BaseFragmentActivity implements
                 bundle.putString("TITLE",getResources().getString(R.string.user_story));
                 Intent intentUserStory = new Intent(MainActivity.this,
                 //        PageActivity.class);
-                        TestActivity.class);//
+                //        TestActivity.class);//
                 // UserStoryActivity.class);
+                        GuideActivity.class);
+                //         TestForWebviewActivity.class);
                 intentUserStory.putExtras(bundle);
                 startActivity(intentUserStory);
                 break;

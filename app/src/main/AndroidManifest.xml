@@ -64,7 +64,10 @@
             android:screenOrientation="portrait"/>
         <activity android:name=".view.activity.PageActivity"
             android:screenOrientation="portrait"/>
-
+        <activity android:name=".view.activity.TestForWebviewActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".view.activity.GuideActivity"
+            android:screenOrientation="portrait"/>
         <!-- 处理的是glide图片处理 -->
         <meta-data android:name="com.sina.crowclub.utils.CustomCachingGlideModule"
              android:value="GlideModule"/>
