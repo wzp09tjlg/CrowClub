@@ -119,6 +119,7 @@ public class GuideActivity extends BaseFragmentActivity {
         int[] temp = CommonHelper.getDisplayValue(mContext);
         float xScale = 1.0f *  temp[0] / width ;
         float yScale = 1.0f *  temp[1] / height;
+        LogUtil.e("xScale:" + xScale + "   yScale:" + yScale);
         Matrix matrix = new Matrix();
         matrix.postScale(1 * xScale, 1 * yScale);
         // 得到新的图片
