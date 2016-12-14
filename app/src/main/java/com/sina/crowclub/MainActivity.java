@@ -113,6 +113,7 @@ public class MainActivity extends BaseFragmentActivity implements
                 //        TestActivity.class);//
                 // UserStoryActivity.class);
                         GuideActivity.class);
+//                        LaunchModeActivity.class);
                 //         TestForWebviewActivity.class);
                 intentUserStory.putExtras(bundle);
                 startActivity(intentUserStory);

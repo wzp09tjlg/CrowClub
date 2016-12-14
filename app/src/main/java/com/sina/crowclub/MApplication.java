@@ -3,10 +3,8 @@ package com.sina.crowclub;
 import android.app.Application;
 import android.content.Context;
 
-import com.alibaba.sdk.android.feedback.impl.FeedbackAPI;
 import com.sina.crowclub.database.CommonDao;
 import com.sina.crowclub.utils.CommonPrefence;
-import com.sina.crowclub.utils.FinalUtil;
 import com.sina.crowclub.utils.ThreadPool;
 import com.sina.crowclub.view.base.BaseFragmentActivity;
 import com.sina.crowclub.view.widget.GlobalToast.GloableToast;
@@ -22,7 +20,7 @@ public class MApplication extends Application {
     private static final String TAG = "MApplication";
     /** Data */
     public static Context mContext;
-    private Stack<BaseFragmentActivity> activities;
+    private static Stack<BaseFragmentActivity> activities;
     private static CommonPrefence commonPrefence;
     public static CommonDao mCommonDao;
 
@@ -36,12 +34,13 @@ public class MApplication extends Application {
         initGlobalVar();
 
         //其他配置
+        getBaseContext();
     }
 
     // 初始化全局变量
     private void initGlobalVar(){
         commonPrefence = new CommonPrefence(mContext);   //初始化sharepre
-        FeedbackAPI.init(this, FinalUtil.ALIBC_APP_KEY); //初始化阿里百川
+        //FeedbackAPI.init(this, FinalUtil.ALIBC_APP_KEY); //初始化阿里百川
         GloableToast.getInsance(mContext);               //可以控制显示时间的toast
         mCommonDao = new CommonDao(mContext);            //数据库的公共类
 
@@ -60,23 +59,33 @@ public class MApplication extends Application {
         return commonPrefence;
     }
 
-    public void addActivity(BaseFragmentActivity activity){
+    public static void addActivity(BaseFragmentActivity activity){
         if(activities == null)
             activities = new Stack<BaseFragmentActivity>();
         activities.push(activity);
     }
 
-    public void removeActivity(BaseFragmentActivity activity){
+    public static void removeActivity(BaseFragmentActivity activity){
         if(activities == null || activities.isEmpty())
             return;
         activities.push(activity);
     }
 
-    public void removeActivityAll(){
+    public static void removeActivityAll(){
         if(activities == null || activities.isEmpty())
             return;
         for(BaseFragmentActivity activity:activities)
             activities.pop();
+    }
+
+    public static int getActivityNum(){
+        if(activities == null) return 0;
+        return activities.capacity();
+    }
+
+    public static Stack<BaseFragmentActivity> getActivities(){
+        if(activities == null) return null;
+        return activities;
     }
 
     //全局变量的自定义属性设置 (SDK2.0版本貌似没啥卵用)

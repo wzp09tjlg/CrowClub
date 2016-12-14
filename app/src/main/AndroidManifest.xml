@@ -19,12 +19,15 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <!-- ***************************************** -->
+        <!-- Activity -->
+        <!-- ***************************************** -->
         <activity android:name=".MainActivity">
-            <intent-filter>
+           <!-- <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            </intent-filter>-->
         </activity>
 
         <activity android:name=".view.activity.UserStoryActivity"
@@ -73,10 +76,32 @@
         <activity android:name=".view.activity.TestForWebviewActivity"
             android:screenOrientation="portrait"/>
         <activity android:name=".view.activity.GuideActivity"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".view.activity.LaunchModeActivity"
             android:screenOrientation="portrait"/>
+        <activity android:name=".view.activity.launchMode.StandardAActivity"
+            android:launchMode="standard"/>
+        <activity android:name=".view.activity.launchMode.StandardBActivity"
+            android:launchMode="standard"/>
+        <activity android:name=".view.activity.launchMode.SingleInstanceAActivity"
+            android:launchMode="standard"/>
+        <activity android:name=".view.activity.launchMode.SingleInstanceBActivity"
+            android:launchMode="singleInstance"/>
+        <activity android:name=".view.activity.launchMode.SingleInstanceCActivity"
+            android:launchMode="standard"/>
         <!-- 处理的是glide图片处理 -->
         <meta-data android:name="com.sina.crowclub.utils.CustomCachingGlideModule"
              android:value="GlideModule"/>
+        <!-- ***************************************** -->
+        <!-- Service -->
+        <!-- ***************************************** -->
+        <service android:name=".view.service.CommonService"/>
     </application>
 
 </manifest>

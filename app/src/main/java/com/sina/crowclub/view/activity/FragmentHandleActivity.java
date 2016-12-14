@@ -1,13 +1,10 @@
 package com.sina.crowclub.view.activity;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
@@ -21,14 +18,14 @@ import com.sina.crowclub.view.base.BaseFragmentActivity;
 import com.sina.crowclub.view.fragment.HandlerOneFragment;
 import com.sina.crowclub.view.fragment.HandlerTwoFragment;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by wu on 2016/8/22.
  */
-public class FragmentHandleActivity extends BaseFragmentActivity implements
-        View.OnClickListener
+public class FragmentHandleActivity extends BaseFragmentActivity
+/*        implements
+        View.OnClickListener*/
 {
     private static final String TAG = FragmentHandleActivity.class.getSimpleName();
     private final String TITLE = "TITLE";
@@ -65,11 +62,11 @@ public class FragmentHandleActivity extends BaseFragmentActivity implements
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fragment_handler);
-        getExtra(getIntent());
-        initViews();
+/*        getExtra(getIntent());
+        initViews();*/
     }
 
-    private void getExtra(Intent intent){
+/*    private void getExtra(Intent intent){
         Bundle bundle = intent.getExtras();
 
         mTitle = bundle.getString(TITLE);
@@ -149,5 +146,5 @@ public class FragmentHandleActivity extends BaseFragmentActivity implements
         FragmentTransaction transaction = fm.beginTransaction();
         transaction.remove(mFragments.get(mCurIndex));
         transaction.commit();
-    }
+    }*/
 }

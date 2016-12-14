@@ -1,7 +1,6 @@
 package com.sina.crowclub.view.activity;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
@@ -9,17 +8,14 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.alibaba.sdk.android.feedback.impl.FeedbackAPI;
-import com.alibaba.sdk.android.feedback.util.IUnreadCountCallback;
 import com.sina.crowclub.R;
-import com.sina.crowclub.utils.LogUtil;
 import com.sina.crowclub.view.base.BaseFragmentActivity;
 
 /**
  * Created by wu on 2016/9/29.
  */
 public class FeedbackActivity extends BaseFragmentActivity
-        implements View.OnClickListener
+        /*implements View.OnClickListener*/
 {
     /** View */
     private View viewTitle;
@@ -41,11 +37,11 @@ public class FeedbackActivity extends BaseFragmentActivity
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feedback);
-        getExtral(getIntent());
-        initViews();
+        /*getExtral(getIntent());
+        initViews();*/
     }
 
-    private void getExtral(Intent intent){
+/*    private void getExtral(Intent intent){
         Bundle bundle = intent.getExtras();
         mTitle = bundle.getString("TITLE");
     }
@@ -111,5 +107,5 @@ public class FeedbackActivity extends BaseFragmentActivity
 
     private void openFeedbackActivity(){
         FeedbackAPI.openFeedbackActivity();
-    }
+    }*/
 }

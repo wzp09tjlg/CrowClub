@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 
+import com.sina.crowclub.MApplication;
 import com.sina.crowclub.R;
 import com.sina.crowclub.utils.LogUtil;
 import com.sina.crowclub.view.widget.CommonDialog;
@@ -36,6 +37,7 @@ public abstract class BaseFragmentActivity extends FragmentActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        MApplication.addActivity(this);
     }
 
     @Override
@@ -126,4 +128,18 @@ public abstract class BaseFragmentActivity extends FragmentActivity {
 
     /** 提供引导页 */
     protected void addGuide(){};
+
+
+    /** 测试 查看启动模式的当前堆栈的activity */
+    protected void toLogPrint(){
+        LogUtil.e("SingleInstanceAActivity:");
+        int len = MApplication.getActivityNum();
+        for(int i = 0;i<len;i++){
+            try{
+                BaseFragmentActivity base = MApplication.getActivities().get(i);
+                LogUtil.e("name:" + base.getClass().getSimpleName());
+            }catch (Exception e){}
+
+        }
+    }
 }
